@@ -38,6 +38,7 @@
     line-height:1.65;
     overflow-x:hidden;
   }
+  body.locked{overflow:hidden;height:100svh;height:100vh}
   h1,h2,h3,.script{
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     font-weight:600;
@@ -1187,9 +1188,11 @@
   /* ---------- open the invitation ---------- */
   var openBtn = $("open-invite");
   if (openBtn) {
+    document.body.classList.add("locked");
     openBtn.addEventListener("click", function () {
       var intro = $("intro");
       intro.classList.add("hide");
+      document.body.classList.remove("locked");
       burst();
       startMusic();
       setTimeout(function () { intro.style.display = "none"; }, 900);
