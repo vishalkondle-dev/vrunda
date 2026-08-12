@@ -1168,6 +1168,7 @@
       cursorEl.classList.remove("bounce");
       void cursorEl.offsetWidth;   // restart the animation
       cursorEl.classList.add("bounce");
+      setTimeout(function () { cursorEl.classList.remove("bounce"); }, 600);
       for (var i = 0; i < 6; i++) spawnFeather(e.clientX, e.clientY, "click-feather");
     });
   })();
