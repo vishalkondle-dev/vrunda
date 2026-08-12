@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vrunda turns ONE — First Birthday Invitation</title>
+<meta name="description" content="You are warmly invited to celebrate Vrunda's first birthday.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vrunda turns ONE">
+<meta property="og:description" content="You are warmly invited to celebrate Vrunda's first birthday.">
+<meta property="og:image" content="images/hero.jpeg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>">
+
+<style>
+  :root{
+    --marigold:#f2a10a;
+    --marigold-deep:#e07b16;
+    --rose:#c2185b;
+    --pink:#f9c9d8;
+    --pink-soft:#fdeef2;
+    --cream:#fffaf2;
+    --gold:#c99a2e;
+    --gold-light:#e8c86a;
+    --ink:#4a2c2a;
+    --ink-soft:#7a5b52;
+    --maxw:1040px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.script{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    font-weight:600;
+    line-height:1.2;
+    margin:0;
+  }
+  p{margin:0 0 1rem}
+  a{color:var(--rose)}
+  img{max-width:100%}
+
+  /* faint mandala wash behind the whole page */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+    background-image:
+      radial-gradient(circle at 12% 18%, var(--marigold) 0 2px, transparent 3px),
+      radial-gradient(circle at 88% 42%, var(--rose) 0 2px, transparent 3px),
+      radial-gradient(circle at 40% 78%, var(--gold) 0 2px, transparent 3px);
+    background-size:160px 160px,220px 220px,190px 190px;
+  }
+
+  .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .wrap.narrow{max-width:720px}
+  section{padding:clamp(2.5rem,7vw,4.5rem) 0}
+
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;
+    color:var(--gold);margin:0 0 .75rem
+  }
+  .section-title{
+    font-size:clamp(1.5rem,4.5vw,2.15rem);text-align:center;color:var(--rose);
+    margin-bottom:.4rem
+  }
+  .section-sub{text-align:center;color:var(--ink-soft);margin-bottom:2.25rem}
+
+  .toran{display:block;width:100%;height:auto;filter:drop-shadow(0 3px 4px rgba(180,90,20,.18))}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;text-align:center;
+    padding:0 0 clamp(2.5rem,8vw,4rem);
+    background:
+      radial-gradient(120% 90% at 50% -10%, #fff6e3 0%, var(--pink-soft) 45%, var(--cream) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;padding-top:clamp(.75rem,3vw,1.5rem)}
+  .hero .kicker{
+    font-size:clamp(.8rem,2.4vw,.95rem);letter-spacing:.3em;text-transform:uppercase;
+    color:var(--marigold-deep);font-weight:700;margin:0 0 .4rem
+  }
+  .hero-name{
+    font-size:clamp(2.9rem,13vw,6rem);color:var(--rose);letter-spacing:.02em;margin:0
+  }
+  .hero-turns{
+    font-size:clamp(.95rem,3.2vw,1.25rem);letter-spacing:.34em;text-transform:uppercase;
+    color:var(--ink-soft);margin:.3rem 0 1.6rem
+  }
+
+  /* hero portrait in an arch frame with the "1" medallion tucked at its base */
+  .hero-portrait{
+    position:relative;width:min(340px,78vw);margin:0 auto
+  }
+  .hero-portrait .arch{
+    border:3px solid var(--gold-light);
+    border-radius:50% 50% 16px 16px / 34% 34% 16px 16px;
+    overflow:hidden;aspect-ratio:3/4;background:var(--pink-soft);
+    box-shadow:0 16px 40px rgba(201,154,46,.3)
+  }
+  .hero-portrait .arch img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+  .badge{
+    position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);
+    width:104px;height:104px
+  }
+  .badge svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 14px rgba(194,24,91,.28))}
+  .badge .glow{animation:diya 3.4s ease-in-out infinite}
+  @keyframes diya{0%,100%{opacity:.55}50%{opacity:1}}
+
+  .hero-when{
+    margin-top:3.6rem;font-size:clamp(1rem,3vw,1.2rem);color:var(--ink);font-weight:600
+  }
+  .hero-when span{display:block;color:var(--ink-soft);font-weight:400;font-size:.95em}
+
+  .petals{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .petal{
+    position:absolute;top:-6%;width:14px;height:10px;border-radius:60% 40% 55% 45%;
+    background:linear-gradient(135deg,var(--marigold) 0%,var(--marigold-deep) 100%);
+    opacity:.75;animation:fall linear infinite
+  }
+  @keyframes fall{
+    0%{transform:translate3d(0,-10vh,0) rotate(0deg)}
+    100%{transform:translate3d(22px,110vh,0) rotate(540deg)}
+  }
+
+  /* ---------- countdown ---------- */
+  .countdown{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;margin:0 auto
+  }
+  @media(min-width:620px){.countdown{grid-template-columns:repeat(4,1fr)}}
+  .cd-cell{
+    position:relative;background:#fff;border:1px solid var(--gold-light);border-radius:14px;
+    padding:1.1rem .5rem;text-align:center;box-shadow:0 6px 18px rgba(201,154,46,.12)
+  }
+  .cd-cell::before{
+    content:"";position:absolute;inset:5px;border-radius:10px;
+    border:1px dashed rgba(201,154,46,.45);pointer-events:none
+  }
+  .cd-num{
+    display:block;font-size:clamp(1.9rem,7vw,2.6rem);font-weight:700;color:var(--rose);
+    font-variant-numeric:tabular-nums;line-height:1
+  }
+  .cd-label{
+    display:block;margin-top:.35rem;font-size:.7rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-soft)
+  }
+  .cd-done{
+    text-align:center;font-size:clamp(1.3rem,5vw,1.9rem);color:var(--rose);
+    font-family:"Iowan Old Style",Palatino,Georgia,serif
+  }
+
+  /* ---------- newborn banner (two landscape photos) ---------- */
+  .band{
+    display:grid;grid-template-columns:1fr;gap:14px
+  }
+  @media(min-width:760px){.band{grid-template-columns:1fr 1fr}}
+  .band button{
+    border:2px solid var(--gold-light);border-radius:16px;overflow:hidden;padding:0;
+    background:var(--pink-soft);cursor:pointer;aspect-ratio:16/9;
+    box-shadow:0 10px 26px rgba(201,154,46,.16);
+    transition:transform .25s ease
+  }
+  .band button:hover,.band button:focus-visible{transform:translateY(-3px)}
+  .band img{width:100%;height:100%;object-fit:cover;display:block}
+  .band-caption{
+    text-align:center;color:var(--ink-soft);font-style:italic;margin:1.25rem 0 0
+  }
+
+  /* ---------- invitation note ---------- */
+  .note{
+    position:relative;text-align:center;
+    background:linear-gradient(180deg,#fff 0%,var(--pink-soft) 100%);
+    border:1px solid var(--gold-light);border-radius:18px;
+    padding:clamp(2rem,6vw,3rem) clamp(1.25rem,5vw,2.75rem);
+    box-shadow:0 10px 30px rgba(194,24,91,.08)
+  }
+  .corner{position:absolute;width:44px;height:44px;opacity:.75}
+  .corner.tl{top:8px;left:8px}
+  .corner.tr{top:8px;right:8px;transform:scaleX(-1)}
+  .corner.bl{bottom:8px;left:8px;transform:scaleY(-1)}
+  .corner.br{bottom:8px;right:8px;transform:scale(-1,-1)}
+  .note p{color:var(--ink-soft)}
+  .note .hosts{
+    margin:1.25rem 0 0;font-family:"Iowan Old Style",Palatino,Georgia,serif;
+    font-size:1.2rem;color:var(--rose)
+  }
+
+  /* ---------- details ---------- */
+  .details{
+    max-width:680px;margin:0 auto;display:grid;gap:2px;
+    background:var(--gold-light);border:1px solid var(--gold-light);border-radius:16px;
+    overflow:hidden
+  }
+  .row{display:flex;gap:14px;align-items:flex-start;background:#fff;padding:1.1rem 1.25rem}
+  .row svg{flex:0 0 22px;width:22px;height:22px;color:var(--gold);margin-top:2px}
+  .row-label{
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+    font-weight:700;margin:0
+  }
+  .row-value{margin:.15rem 0 0;font-weight:600}
+  .row-value .muted{display:block;font-weight:400;color:var(--ink-soft);font-size:.95em}
+
+  /* ---------- galleries ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(min-width:700px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  .frame{
+    position:relative;border:2px solid var(--gold-light);
+    border-radius:50% 50% 12px 12px / 32% 32% 12px 12px;
+    overflow:hidden;aspect-ratio:3/4;background:var(--pink-soft);
+    padding:0;cursor:pointer;
+    box-shadow:0 8px 22px rgba(201,154,46,.16);
+    transition:transform .25s ease,box-shadow .25s ease
+  }
+  .frame:hover,.frame:focus-visible{transform:translateY(-4px);box-shadow:0 14px 28px rgba(201,154,46,.26)}
+  .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+  .frame.is-empty{
+    display:flex;align-items:center;justify-content:center;cursor:default;
+    background:repeating-linear-gradient(45deg,var(--pink-soft) 0 10px,#fdf5e6 10px 20px)
+  }
+  .frame.is-empty span{
+    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+    font-weight:700
+  }
+
+  /* family photos: soft rectangles rather than arches */
+  .family{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:700px){.family{grid-template-columns:repeat(3,1fr)}}
+  .fcard{
+    border:2px solid var(--gold-light);border-radius:16px;overflow:hidden;padding:0;
+    background:var(--pink-soft);cursor:pointer;
+    /* matches the 3:4 family photos exactly, so nobody gets cropped out */
+    aspect-ratio:3/4;
+    box-shadow:0 10px 26px rgba(194,24,91,.14);
+    transition:transform .25s ease
+  }
+  .fcard:hover,.fcard:focus-visible{transform:translateY(-4px)}
+  .fcard img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:50;display:none;
+    background:rgba(74,44,42,.94);padding:24px;
+    align-items:center;justify-content:center
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{
+    max-width:100%;max-height:calc(100vh - 96px);border-radius:10px;
+    border:3px solid var(--gold-light)
+  }
+  .lb-btn{
+    position:absolute;background:rgba(0,0,0,.35);border:0;color:#fff;cursor:pointer;
+    width:48px;height:48px;border-radius:50%;font-size:1.7rem;line-height:1;
+    display:flex;align-items:center;justify-content:center
+  }
+  .lb-btn:hover{background:rgba(0,0,0,.6)}
+  #lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+  #lb-next{right:14px;top:50%;transform:translateY(-50%)}
+  #lb-close{top:14px;right:14px;font-size:2rem}
+  .lb-count{
+    position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+    color:#f7e3c0;font-size:.85rem;letter-spacing:.12em
+  }
+
+  /* ---------- directions button ---------- */
+  .directions{text-align:center;margin:1.75rem 0 0}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;
+    background:linear-gradient(135deg,var(--marigold) 0%,var(--marigold-deep) 100%);
+    color:#fff;text-decoration:none;font-weight:700;letter-spacing:.04em;
+    padding:.85rem 1.6rem;border-radius:999px;
+    box-shadow:0 8px 18px rgba(224,123,22,.32);
+    transition:transform .2s ease,box-shadow .2s ease
+  }
+  .btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 24px rgba(224,123,22,.42)}
+  .btn svg{width:18px;height:18px}
+
+  /* ---------- footer ---------- */
+  footer{text-align:center;padding-bottom:2.5rem}
+  .footer-strip{
+    height:10px;
+    background:repeating-linear-gradient(90deg,var(--marigold) 0 14px,var(--rose) 14px 28px);
+    opacity:.85;margin-bottom:2rem
+  }
+  footer .love{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.15rem;color:var(--rose);margin:0}
+  footer .tiny{font-size:.8rem;color:var(--ink-soft);margin:.4rem 0 0}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .petals{display:none}
+    .badge .glow{animation:none;opacity:.9}
+    .reveal{opacity:1;transform:none;transition:none}
+    .frame,.fcard,.btn,.band button{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!--
+  ============================================================
+  EDIT EVERYTHING HERE. Every value is filled in.
+    partyDateTime  ISO date+time with timezone — drives the countdown
+    dateText       human-readable date shown on the page
+    timeText       human-readable time shown on the page
+    venueName      hall / house name
+    venueAddress   address shown under the venue name
+    mapsLink       exact Google Maps pin for the Get Directions button;
+                   "" falls back to a search for venueName + venueAddress
+    hosts          who signs the invitation note
+    familyName     shown in the footer and the family section
+  PHOTOS: heroPhoto / bandPhotos / galleryPhotos / familyPhotos below
+  hold the filenames from the images/ folder. Filenames with spaces
+  and brackets are fine — they are URL-encoded automatically.
+  Any file that fails to load turns into a decorative placeholder.
+  ============================================================
+-->
+<script>
+  const IMG = "images/";
+
+  const CONFIG = {
+    babyName: "Vrunda",
+    partyDateTime: "2026-08-23T19:00:00+05:30",
+    dateText: "Sunday, 23 August 2026",
+    timeText: "7:00 PM onwards",
+    venueName: "Kamal Glory",
+    venueAddress: "Katraj Pat Road, near ISKCON Temple, Pune",
+    // the exact pin — used by the Get Directions button.
+    // set to "" to fall back to a Google Maps search for the address above.
+    mapsLink: "https://maps.app.goo.gl/tr6KhYYTdxxDZVCs7",
+    hosts: "Shweta and Rohan",
+    familyName: "Mithapelli Family",
+
+    // the pink-and-gold traditional portrait — best match for the theme
+    heroPhoto: "hero.jpeg",
+
+    // the two wide newborn photos, used as the "where it began" band
+    bandPhotos: [
+      "newborn-1.jpeg",
+      "newborn-2.jpeg"
+    ],
+
+    // the year in order: newborn -> first outings -> sitting up
+    galleryPhotos: [
+      "gallery-1.jpeg",
+      "gallery-2.jpeg",
+      "gallery-3.jpeg",
+      "gallery-4.jpeg",
+      "gallery-5.jpeg",
+      "gallery-6.jpeg",
+      "gallery-7.jpeg",
+      "gallery-8.jpeg",
+      "gallery-9.jpeg"
+    ],
+
+    familyPhotos: [
+      "family-1.jpeg",
+      "family-2.jpeg",
+      "family-3.jpeg"
+    ]
+  };
+</script>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="toran" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 8 Q300 78 600 78 Q900 78 1200 8" fill="none" stroke="#7a4a12" stroke-width="3"/>
+    <g id="toran-flowers"></g>
+  </svg>
+
+  <div class="petals" aria-hidden="true"></div>
+
+  <div class="wrap hero-inner">
+    <p class="kicker">You are invited</p>
+    <h1 class="hero-name" id="hero-name">Vrunda</h1>
+    <p class="hero-turns">turns one</p>
+
+    <div class="hero-portrait">
+      <div class="arch"><img id="hero-photo" alt="Vrunda" fetchpriority="high"></div>
+      <div class="badge">
+        <svg viewBox="0 0 120 120" aria-label="One year">
+          <circle cx="60" cy="60" r="56" fill="#fffaf2" stroke="#c99a2e" stroke-width="2"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#c99a2e" stroke-width="1" stroke-dasharray="4 6"/>
+          <circle class="glow" cx="60" cy="60" r="44" fill="url(#halo)"/>
+          <g id="badge-petals"></g>
+          <defs>
+            <radialGradient id="halo">
+              <stop offset="50%" stop-color="#ffe9b8" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#f2a10a" stop-opacity=".5"/>
+            </radialGradient>
+          </defs>
+          <text x="60" y="82" text-anchor="middle" font-size="58" font-weight="700"
+                font-family="Iowan Old Style, Palatino, Georgia, serif" fill="#c2185b">1</text>
+        </svg>
+      </div>
+    </div>
+
+    <p class="hero-when">
+      <span id="hero-date">{{PARTY_DATE}}</span>
+      <span id="hero-time">{{PARTY_TIME}}</span>
+    </p>
+  </div>
+</header>
+
+<!-- ================= COUNTDOWN ================= -->
+<section id="countdown" class="reveal">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center">The wait is almost over</p>
+    <h2 class="section-title">Counting Down</h2>
+    <p class="section-sub">Until the celebration begins</p>
+    <div class="countdown" id="cd">
+      <div class="cd-cell"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Days</span></div>
+      <div class="cd-cell"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Hours</span></div>
+      <div class="cd-cell"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Minutes</span></div>
+      <div class="cd-cell"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWBORN BAND ================= -->
+<section id="beginning" class="reveal">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center">Where it all began</p>
+    <h2 class="section-title">Our Tiniest Days</h2>
+    <p class="section-sub">Fast asleep, and already the centre of our world</p>
+    <div class="band" id="band"></div>
+    <p class="band-caption">&ldquo;And just like that, a whole year went by.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ================= INVITATION NOTE ================= -->
+<section id="note" class="reveal">
+  <div class="wrap narrow">
+    <div class="note">
+      <svg class="corner tl" viewBox="0 0 60 60" aria-hidden="true">
+        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+          <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
+          <circle cx="18" cy="18" r="4"/>
+        </g>
+      </svg>
+      <svg class="corner tr" viewBox="0 0 60 60" aria-hidden="true">
+        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+          <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
+          <circle cx="18" cy="18" r="4"/>
+        </g>
+      </svg>
+      <svg class="corner bl" viewBox="0 0 60 60" aria-hidden="true">
+        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+          <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
+          <circle cx="18" cy="18" r="4"/>
+        </g>
+      </svg>
+      <svg class="corner br" viewBox="0 0 60 60" aria-hidden="true">
+        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+          <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
+          <circle cx="18" cy="18" r="4"/>
+        </g>
+      </svg>
+
+      <p class="eyebrow">With joy in our hearts</p>
+      <h2 class="section-title" style="margin-bottom:1rem">A Whole Year of Vrunda</h2>
+      <p>
+        One year of tiny fingers and toothless smiles, of first steps and endless
+        giggles &mdash; and every single day of it has filled our home with light.
+      </p>
+      <p>
+        Please join us as we celebrate our little girl&rsquo;s very first birthday.
+        Come for the sweets, stay for the laughter, and help us bless her year ahead.
+      </p>
+      <p class="hosts">&mdash; <span id="hosts-name">{{PARENT_NAMES}}</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="reveal">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center">Our first year together</p>
+    <h2 class="section-title">Little Moments</h2>
+    <p class="section-sub">Twelve months, a thousand memories &mdash; tap any photo to enlarge</p>
+    <div class="gallery" id="gallery-grid"></div>
+  </div>
+</section>
+
+<!-- ================= DETAILS ================= -->
+<section id="details" class="reveal">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center">Save the date</p>
+    <h2 class="section-title">Celebration Details</h2>
+    <p class="section-sub">Everything you need to know</p>
+
+    <div class="details">
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>
+        </svg>
+        <div><p class="row-label">Date</p><p class="row-value" id="d-date">{{PARTY_DATE}}</p></div>
+      </div>
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+        </svg>
+        <div><p class="row-label">Time</p><p class="row-value" id="d-time">{{PARTY_TIME}}</p></div>
+      </div>
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>
+        </svg>
+        <div>
+          <p class="row-label">Venue</p>
+          <p class="row-value" id="d-venue">{{VENUE_NAME}}</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="directions">
+      <a class="btn" id="m-link" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>
+        </svg>
+        Get Directions
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ================= FAMILY ================= -->
+<section id="family" class="reveal">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center">The three of us</p>
+    <h2 class="section-title" id="family-title">With Love, From the Family</h2>
+    <p class="section-sub">We cannot wait to celebrate her with you</p>
+    <div class="family" id="family-grid"></div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-strip" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="love">With love, <span id="f-hosts">the Mithapelli Family</span></p>
+    <p class="tiny">Vrunda&rsquo;s First Birthday &middot; <span id="f-date">{{PARTY_DATE}}</span></p>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-btn" id="lb-close" aria-label="Close photo">&times;</button>
+  <button class="lb-btn" id="lb-prev" aria-label="Previous photo">&#8249;</button>
+  <button class="lb-btn" id="lb-next" aria-label="Next photo">&#8250;</button>
+  <img id="lb-img" alt="">
+  <p class="lb-count" id="lb-count"></p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var C = CONFIG;
+  var $ = function (id) { return document.getElementById(id); };
+  var setText = function (id, value) { var el = $(id); if (el) el.textContent = value; };
+
+  // filenames contain spaces and brackets, so encode each one for use in a URL
+  var src = function (file) { return IMG + encodeURIComponent(file); };
+
+  /* ---------- fill in content from CONFIG ---------- */
+  setText("hero-name", C.babyName);
+  setText("hero-date", C.dateText);
+  setText("hero-time", C.timeText);
+  setText("hosts-name", C.hosts);
+  setText("d-date", C.dateText);
+  setText("d-time", C.timeText);
+  setText("f-hosts", "the " + C.familyName);
+  setText("family-title", "With Love, From the " + C.familyName);
+  setText("f-date", C.dateText);
+  document.title = C.babyName + " turns ONE — First Birthday Invitation";
+
+  // venue row shows the name with the address underneath it
+  var venueEl = $("d-venue");
+  if (venueEl) {
+    venueEl.textContent = C.venueName;
+    var addr = document.createElement("span");
+    addr.className = "muted";
+    addr.textContent = C.venueAddress;
+    venueEl.appendChild(addr);
+  }
+
+  var mapLink = $("m-link");
+  if (mapLink) {
+    mapLink.href = C.mapsLink
+      ? C.mapsLink
+      : "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(C.venueName + ", " + C.venueAddress);
+  }
+
+  /* ---------- hero portrait ---------- */
+  var heroImg = $("hero-photo");
+  if (heroImg) {
+    heroImg.src = src(C.heroPhoto);
+    heroImg.alt = C.babyName + " dressed up for her first birthday";
+  }
+
+  /* ---------- toran garland flowers ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  var toran = $("toran-flowers");
+  if (toran) {
+    for (var i = 0; i <= 40; i++) {
+      var t = i / 40;
+      // same quadratic curve as the string above
+      var x = 2 * (1 - t) * t * 600 + t * t * 1200;
+      var y = (1 - t) * (1 - t) * 8 + 2 * (1 - t) * t * 78 + t * t * 8;
+      var drop = 14 + (i % 4) * 9;          // alternating hanging lengths
+      var stem = document.createElementNS(NS, "line");
+      stem.setAttribute("x1", x); stem.setAttribute("y1", y);
+      stem.setAttribute("x2", x); stem.setAttribute("y2", y + drop);
+      stem.setAttribute("stroke", "#7a9a3a");
+      stem.setAttribute("stroke-width", "1.5");
+      toran.appendChild(stem);
+
+      var bud = document.createElementNS(NS, "circle");
+      bud.setAttribute("cx", x);
+      bud.setAttribute("cy", y + drop + 6);
+      bud.setAttribute("r", i % 2 ? 7 : 6);
+      bud.setAttribute("fill", i % 3 === 0 ? "#c2185b" : (i % 2 ? "#f2a10a" : "#e07b16"));
+      toran.appendChild(bud);
+    }
+  }
+
+  /* ---------- petal ring around the "1" badge ---------- */
+  var ring = $("badge-petals");
+  if (ring) {
+    for (var p = 0; p < 20; p++) {
+      var a = (p / 20) * Math.PI * 2;
+      var c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", (60 + Math.cos(a) * 52).toFixed(2));
+      c.setAttribute("cy", (60 + Math.sin(a) * 52).toFixed(2));
+      c.setAttribute("r", p % 2 ? 3 : 1.8);
+      c.setAttribute("fill", p % 3 === 0 ? "#c2185b" : "#f2a10a");
+      ring.appendChild(c);
+    }
+  }
+
+  /* ---------- drifting petals ---------- */
+  var petalBox = document.querySelector(".petals");
+  if (petalBox) {
+    for (var q = 0; q < 16; q++) {
+      var el = document.createElement("i");
+      el.className = "petal";
+      el.style.left = (q * 6.5 + 2) + "%";
+      el.style.animationDuration = (9 + (q % 5) * 2.5) + "s";
+      el.style.animationDelay = (-q * 1.3) + "s";
+      el.style.transform = "scale(" + (0.7 + (q % 4) * 0.2) + ")";
+      petalBox.appendChild(el);
+    }
+  }
+
+  /* ---------- countdown ---------- */
+  var target = new Date(C.partyDateTime).getTime();
+  var cd = $("cd");
+  var pad = function (n) { return n < 10 ? "0" + n : String(n); };
+
+  function tick() {
+    if (isNaN(target)) {
+      cd.innerHTML = '<p class="cd-done" style="grid-column:1/-1">' +
+        "Add the party date to <code>partyDateTime</code> to start the countdown.</p>";
+      return true;
+    }
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      cd.innerHTML = '<p class="cd-done" style="grid-column:1/-1">' +
+        "🌼 The celebration has begun! 🌼</p>";
+      return true;    // stop ticking
+    }
+    var s = Math.floor(diff / 1000);
+    setText("cd-d", String(Math.floor(s / 86400)));
+    setText("cd-h", pad(Math.floor(s / 3600) % 24));
+    setText("cd-m", pad(Math.floor(s / 60) % 60));
+    setText("cd-s", pad(s % 60));
+    return false;
+  }
+
+  if (!tick()) {
+    var timer = setInterval(function () { if (tick()) clearInterval(timer); }, 1000);
+  }
+
+  /* ---------- lightbox, shared by every photo on the page ---------- */
+  var shots = [];                 // {src, alt} in the order they appear
+  var current = 0;
+  var lb = $("lightbox"), lbImg = $("lb-img"), lbCount = $("lb-count");
+
+  function show(idx, step) {
+    if (!shots.length) return;
+    var dir = step || 1, i = (idx + shots.length) % shots.length, guard = 0;
+    // step over any photo that failed to load, so navigation never lands on a gap
+    while (shots[i].missing && guard++ < shots.length) {
+      i = (i + dir + shots.length) % shots.length;
+    }
+    if (shots[i].missing) return;
+    current = i;
+    lbImg.src = shots[current].src;
+    lbImg.alt = shots[current].alt;
+    lbCount.textContent = (current + 1) + " / " + shots.length;
+  }
+  function openAt(idx) { show(idx); lb.classList.add("open"); $("lb-close").focus(); }
+  function close() { lb.classList.remove("open"); lbImg.removeAttribute("src"); }
+
+  $("lb-close").addEventListener("click", close);
+  $("lb-prev").addEventListener("click", function () { show(current - 1, -1); });
+  $("lb-next").addEventListener("click", function () { show(current + 1, 1); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+  document.addEventListener("keydown", function (e) {
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") show(current - 1, -1);
+    else if (e.key === "ArrowRight") show(current + 1, 1);
+  });
+
+  /* builds one clickable photo tile and registers it with the lightbox */
+  function addTile(parent, file, alt, className, label) {
+    var idx = shots.length;
+    shots.push({ src: src(file), alt: alt });
+
+    var tile = document.createElement("button");
+    tile.type = "button";
+    tile.className = className;
+    tile.setAttribute("aria-label", alt);
+
+    var img = document.createElement("img");
+    img.src = src(file);
+    img.alt = alt;
+    img.loading = "lazy";
+    img.onerror = function () {
+      // photo missing: fall back to a decorative placeholder so nothing looks broken
+      tile.classList.add("is-empty");
+      tile.innerHTML = "";
+      tile.disabled = true;
+      var span = document.createElement("span");
+      span.textContent = label || "Photo";
+      tile.appendChild(span);
+      shots[idx].missing = true;
+    };
+
+    tile.appendChild(img);
+    tile.addEventListener("click", function () {
+      if (!tile.classList.contains("is-empty")) openAt(idx);
+    });
+    parent.appendChild(tile);
+  }
+
+  /* ---------- newborn band ---------- */
+  var band = $("band");
+  C.bandPhotos.forEach(function (file, i) {
+    addTile(band, file, "Newborn " + C.babyName + ", photo " + (i + 1), "", "Photo " + (i + 1));
+  });
+
+  /* ---------- gallery ---------- */
+  var grid = $("gallery-grid");
+  C.galleryPhotos.forEach(function (file, i) {
+    addTile(grid, file, C.babyName + " — moment " + (i + 1), "frame", "Photo " + (i + 1));
+  });
+
+  /* ---------- family ---------- */
+  var fam = $("family-grid");
+  C.familyPhotos.forEach(function (file, i) {
+    addTile(fam, file, C.babyName + " with her parents, photo " + (i + 1), "fcard", "Photo " + (i + 1));
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>

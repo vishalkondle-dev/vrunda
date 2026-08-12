@@ -1,0 +1,5 @@
+.DS_Store
+
+# local tooling state, not part of the invitation
+.claude/settings.local.json
+.claude-flow/
