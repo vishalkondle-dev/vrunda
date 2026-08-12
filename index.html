@@ -27,7 +27,7 @@
   }
 
   *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-snap-type:y proximity}
   body{
     margin:0;
     background:var(--cream);
@@ -58,7 +58,12 @@
 
   .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 20px}
   .wrap.narrow{max-width:720px}
-  section{padding:clamp(2.5rem,7vw,4.5rem) 0}
+  section{
+    min-height:100svh;min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(2rem,6vw,4rem) 0;
+    scroll-snap-align:start
+  }
 
   .eyebrow{
     text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;
@@ -75,7 +80,10 @@
   /* ---------- hero ---------- */
   .hero{
     position:relative;overflow:hidden;text-align:center;
-    padding:0 0 clamp(2.5rem,8vw,4rem);
+    min-height:100svh;min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    scroll-snap-align:start;
+    padding:0 0 clamp(2rem,7vw,4rem);
     background:
       radial-gradient(120% 90% at 50% -10%, #fff6e3 0%, var(--pink-soft) 45%, var(--cream) 100%);
   }
@@ -206,7 +214,7 @@
 
   /* ---------- galleries ---------- */
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media(min-width:700px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:700px){.gallery{grid-template-columns:repeat(4,1fr)}}
   .frame{
     position:relative;border:2px solid var(--gold-light);
     border-radius:50% 50% 12px 12px / 32% 32% 12px 12px;
@@ -227,13 +235,12 @@
   }
 
   /* family photos: soft rectangles rather than arches */
-  .family{display:grid;grid-template-columns:1fr;gap:16px}
-  @media(min-width:700px){.family{grid-template-columns:repeat(3,1fr)}}
+  .family{display:flex;justify-content:center;gap:16px}
   .fcard{
     border:2px solid var(--gold-light);border-radius:16px;overflow:hidden;padding:0;
     background:var(--pink-soft);cursor:pointer;
     /* matches the 3:4 family photos exactly, so nobody gets cropped out */
-    aspect-ratio:3/4;
+    aspect-ratio:3/4;width:min(340px,100%);
     box-shadow:0 10px 26px rgba(194,24,91,.14);
     transition:transform .25s ease
   }
@@ -279,7 +286,7 @@
   .btn svg{width:18px;height:18px}
 
   /* ---------- footer ---------- */
-  footer{text-align:center;padding-bottom:2.5rem}
+  footer{text-align:center;padding-bottom:2.5rem;scroll-snap-align:start}
   .footer-strip{
     height:10px;
     background:repeating-linear-gradient(90deg,var(--marigold) 0 14px,var(--rose) 14px 28px);
@@ -354,14 +361,11 @@
       "gallery-5.jpeg",
       "gallery-6.jpeg",
       "gallery-7.jpeg",
-      "gallery-8.jpeg",
-      "gallery-9.jpeg"
+      "gallery-8.jpeg"
     ],
 
     familyPhotos: [
-      "family-1.jpeg",
-      "family-2.jpeg",
-      "family-3.jpeg"
+      "family-1.jpeg"
     ]
   };
 </script>
