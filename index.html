@@ -293,6 +293,11 @@
     font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lavender-deep);
     font-weight:700
   }
+  .frame .tape-bfly{
+    position:absolute;top:1px;left:50%;transform:translate(-50%,-50%) rotate(-8deg);
+    z-index:3;pointer-events:none
+  }
+  .frame .tape-bfly svg{display:block}
 
   /* family photos: one centered card */
   .family{display:flex;justify-content:center;gap:16px}
@@ -983,6 +988,12 @@
     };
 
     tile.appendChild(img);
+    if (className === "frame") {
+      var bf = document.createElement("i");
+      bf.className = "tape-bfly";
+      bf.innerHTML = butterflySvg(BFLY_COLORS[idx % BFLY_COLORS.length], 26);
+      tile.appendChild(bf);
+    }
     tile.addEventListener("click", function () {
       if (!tile.classList.contains("is-empty")) openAt(idx);
     });
