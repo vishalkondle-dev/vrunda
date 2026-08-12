@@ -123,14 +123,16 @@
   }
   .intro-date{color:var(--ink-soft);margin:0 0 1.8rem}
 
-  /* ---------- opening butterfly burst ---------- */
+  /* ---------- opening butterfly flight: a flock flying up and away ---------- */
   .burst{
-    position:fixed;top:-8%;left:0;z-index:85;pointer-events:none;
-    opacity:0;animation:burstFall linear forwards
+    position:fixed;bottom:-10%;left:0;z-index:85;pointer-events:none;
+    opacity:0;animation:burstFly ease-in-out forwards
   }
-  @keyframes burstFall{
-    0%{transform:translate3d(0,-10vh,0) rotate(-12deg);opacity:.95}
-    100%{transform:translate3d(38px,115vh,0) rotate(640deg);opacity:0}
+  @keyframes burstFly{
+    0%{transform:translate3d(0,0,0) rotate(-10deg);opacity:0}
+    10%{opacity:.95}
+    50%{transform:translate3d(calc(var(--dx) * .5),-55vh,0) rotate(8deg)}
+    100%{transform:translate3d(var(--dx),-118vh,0) rotate(-14deg);opacity:0}
   }
 
   /* ---------- hero ---------- */
@@ -1076,18 +1078,19 @@
     }
   }
 
-  /* ---------- opening butterfly burst ---------- */
+  /* ---------- opening flight: a lot of butterflies fly up and go ---------- */
   function burst() {
     if (REDUCED) return;
-    for (var b = 0; b < 30; b++) {
+    for (var b = 0; b < 44; b++) {
       var p = document.createElement("i");
       p.className = "burst";
       p.style.left = (Math.random() * 100).toFixed(1) + "%";
-      p.innerHTML = butterflySvg(BFLY_COLORS[b % BFLY_COLORS.length], 18 + (b % 4) * 5);
-      p.style.animationDuration = (2.2 + Math.random() * 1.8).toFixed(2) + "s";
-      p.style.animationDelay = (Math.random() * 0.7).toFixed(2) + "s";
+      p.style.setProperty("--dx", (Math.random() * 60 - 30).toFixed(1) + "vw");
+      p.innerHTML = butterflySvg(BFLY_COLORS[b % BFLY_COLORS.length], 16 + (b % 4) * 6);
+      p.style.animationDuration = (2.6 + Math.random() * 2.4).toFixed(2) + "s";
+      p.style.animationDelay = (Math.random() * 1.4).toFixed(2) + "s";
       document.body.appendChild(p);
-      (function (n) { setTimeout(function () { n.remove(); }, 4300); })(p);
+      (function (n) { setTimeout(function () { n.remove(); }, 6000); })(p);
     }
   }
 
