@@ -845,8 +845,8 @@
       }
       return { x: x, y: y };
     }
-    for (var i = 0; i <= 28; i++) {
-      var t = i / 28;
+    for (var i = 0; i <= 36; i++) {
+      var t = i / 36;
       var g = garland(t);
       var drop = 10 + (i % 4) * 8;
       var stem = document.createElementNS(NS, "line");
@@ -856,7 +856,7 @@
       stem.setAttribute("stroke-width", "1.5");
       toran.appendChild(stem);
 
-      var scale = 0.16 + (i % 3) * 0.03;
+      var scale = 0.22 + (i % 3) * 0.04;
       var group = document.createElementNS(NS, "g");
       group.setAttribute("transform", "translate(" + g.x.toFixed(1) + " " + (g.y + drop).toFixed(1) +
         ") scale(" + (i % 2 ? -scale : scale) + " " + scale + ")");
@@ -892,19 +892,19 @@
       box.appendChild(w);
     }
   }
-  addFlutters($("flutter-fixed"), 7, 22);
+  addFlutters($("flutter-fixed"), 12, 30);
   document.querySelectorAll(".intro .flutters").forEach(function (b) {
-    addFlutters(b, 3, 30);
+    addFlutters(b, 5, 36);
     var big = document.createElement("i");
-    big.style.left = "calc(50% - 36px)";
+    big.style.left = "calc(50% - 44px)";
     big.style.top = "2%";
     big.style.animationDuration = "10s";
     big.style.animationDelay = "-3s";
-    big.innerHTML = butterflySvg(BFLY_COLORS[0], 72);
+    big.innerHTML = butterflySvg(BFLY_COLORS[0], 88);
     b.appendChild(big);
   });
   var heroFlutters = document.querySelector(".hero .flutters");
-  if (heroFlutters) addFlutters(heroFlutters, 6, 24);
+  if (heroFlutters) addFlutters(heroFlutters, 10, 32);
 
   /* ---------- big watermark butterflies ---------- */
   function addBig() {
