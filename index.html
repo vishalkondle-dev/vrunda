@@ -126,6 +126,7 @@
     font-size:clamp(1.5rem,5vw,2.2rem);color:var(--lavender-deep);
     margin:0 0 .8rem;display:none
   }
+  .intro-guest strong{font-weight:700}
   .intro-date{color:var(--ink-soft);margin:0 0 1.8rem}
 
   /* ---------- opening butterfly flight: a flock flying up and away ---------- */
@@ -784,7 +785,13 @@
       return w.charAt(0).toUpperCase() + w.slice(1);
     }).join(" ");
     var guestEl = $("intro-guest");
-    guestEl.textContent = "Dear " + guest + ",";
+    guestEl.textContent = "";
+    var dear = document.createElement("span");
+    dear.textContent = "Dear ";
+    var nameEl = document.createElement("strong");
+    nameEl.textContent = guest + ",";
+    guestEl.appendChild(dear);
+    guestEl.appendChild(nameEl);
     guestEl.style.display = "block";
   }
   setText("hosts-name", C.hosts);
