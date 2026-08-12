@@ -121,6 +121,11 @@
     letter-spacing:.4em;text-transform:uppercase;font-size:clamp(.85rem,3vw,1.1rem);
     color:var(--ink-soft);margin:.6rem 0 1.4rem
   }
+  .intro-guest{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:clamp(1.5rem,5vw,2.2rem);color:var(--lavender-deep);
+    margin:0 0 .8rem;display:none
+  }
   .intro-date{color:var(--ink-soft);margin:0 0 1.8rem}
 
   /* ---------- opening butterfly flight: a flock flying up and away ---------- */
@@ -502,6 +507,7 @@
 <div class="intro" id="intro">
   <div class="flutters" aria-hidden="true"></div>
   <div>
+    <p class="intro-guest" id="intro-guest"></p>
     <p class="kicker">You are invited</p>
     <h1 class="intro-name">Vrunda</h1>
     <p class="intro-turns">turns one</p>
@@ -770,6 +776,17 @@
   setText("hero-date", C.dateText);
   setText("hero-time", C.timeText);
   setText("intro-date", C.dateText + " · " + C.timeText);
+
+  // personalise the cover with a ?name= guest from the URL
+  var guest = new URLSearchParams(window.location.search).get("name");
+  if (guest) {
+    guest = guest.split(/\s+/).map(function (w) {
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }).join(" ");
+    var guestEl = $("intro-guest");
+    guestEl.textContent = "Dear " + guest + ",";
+    guestEl.style.display = "block";
+  }
   setText("hosts-name", C.hosts);
   setText("d-date", C.dateText);
   setText("d-time", C.timeText);
