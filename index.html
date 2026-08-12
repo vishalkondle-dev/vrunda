@@ -27,7 +27,7 @@
   }
 
   *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+  html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
   body{
     margin:0;
     background:var(--cream);
@@ -213,6 +213,7 @@
   .row-value .muted{display:block;font-weight:400;color:var(--ink-soft);font-size:.95em}
 
   /* ---------- galleries ---------- */
+  #gallery{padding:clamp(.75rem,2vw,1.5rem) 0}
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   @media(min-width:700px){.gallery{grid-template-columns:repeat(4,1fr)}}
   .frame{
