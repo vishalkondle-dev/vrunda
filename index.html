@@ -9,20 +9,22 @@
 <meta property="og:title" content="Vrunda turns ONE">
 <meta property="og:description" content="You are warmly invited to celebrate Vrunda's first birthday.">
 <meta property="og:image" content="images/hero.jpeg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦋</text></svg>">
 
 <style>
   :root{
-    --marigold:#f2a10a;
-    --marigold-deep:#e07b16;
-    --rose:#c2185b;
-    --pink:#f9c9d8;
-    --pink-soft:#fdeef2;
-    --cream:#fffaf2;
+    --lavender:#b8a5e3;
+    --lavender-deep:#8e76c9;
+    --lavender-soft:#f1ecfb;
+    --blush:#f6b8d0;
+    --blush-soft:#fdeef4;
+    --sky:#a8d3ee;
+    --mint:#9fd8c4;
     --gold:#c99a2e;
     --gold-light:#e8c86a;
     --ink:#4a2c2a;
     --ink-soft:#7a5b52;
+    --cream:#fffaf7;
     --maxw:1040px;
   }
 
@@ -30,7 +32,7 @@
   html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
   body{
     margin:0;
-    background:var(--cream);
+    background:linear-gradient(180deg,#fff 0%,var(--blush-soft) 40%,var(--lavender-soft) 100%);
     color:var(--ink);
     font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,sans-serif;
     line-height:1.65;
@@ -43,16 +45,16 @@
     margin:0;
   }
   p{margin:0 0 1rem}
-  a{color:var(--rose)}
+  a{color:var(--lavender-deep)}
   img{max-width:100%}
 
-  /* faint mandala wash behind the whole page */
+  /* faint pastel butterfly-wing wash behind the whole page */
   body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.06;
     background-image:
-      radial-gradient(circle at 12% 18%, var(--marigold) 0 2px, transparent 3px),
-      radial-gradient(circle at 88% 42%, var(--rose) 0 2px, transparent 3px),
-      radial-gradient(circle at 40% 78%, var(--gold) 0 2px, transparent 3px);
+      radial-gradient(circle at 12% 18%, var(--blush) 0 2px, transparent 3px),
+      radial-gradient(circle at 88% 42%, var(--lavender) 0 2px, transparent 3px),
+      radial-gradient(circle at 40% 78%, var(--mint) 0 2px, transparent 3px);
     background-size:160px 160px,220px 220px,190px 190px;
   }
 
@@ -67,16 +69,68 @@
   .hero.fitted,section.fitted{overflow:hidden}
 
   .eyebrow{
-    text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;
-    color:var(--gold);margin:0 0 .75rem
+    text-transform:uppercase;letter-spacing:.26em;font-size:.7rem;font-weight:700;
+    color:var(--lavender-deep);margin:0 0 .75rem
+  }
+  .eyebrow::before,.eyebrow::after{
+    content:"";display:inline-block;width:34px;height:1px;background:var(--lavender);
+    vertical-align:middle;margin:0 .65em;opacity:.8
   }
   .section-title{
-    font-size:clamp(1.5rem,4.5vw,2.15rem);text-align:center;color:var(--rose);
+    font-size:clamp(1.7rem,5vw,2.5rem);text-align:center;color:var(--lavender-deep);
     margin-bottom:.4rem
   }
-  .section-sub{text-align:center;color:var(--ink-soft);margin-bottom:2.25rem}
+  .section-sub{text-align:center;color:var(--ink-soft);margin-bottom:2.25rem;font-size:.98rem}
 
-  .toran{display:block;width:100%;height:auto;filter:drop-shadow(0 3px 4px rgba(180,90,20,.18))}
+  .toran{display:block;width:100%;height:auto;filter:drop-shadow(0 3px 4px rgba(142,118,201,.25))}
+
+  /* ---------- butterflies ---------- */
+  .butterfly-svg{display:block}
+  .flutter-fixed{position:fixed;inset:0;z-index:65;pointer-events:none}
+  .flutter-fixed i,.flutters i{position:absolute;display:block;animation:floaty ease-in-out infinite}
+  .flutter-fixed i svg,.flutters i svg{display:block;transform-origin:50% 50%;animation:flap ease-in-out infinite;animation-duration:1.8s}
+  @keyframes floaty{
+    0%{transform:translate(0,0) rotate(-3deg)}
+    25%{transform:translate(16px,-24px) rotate(2deg)}
+    50%{transform:translate(4px,-6px) rotate(-2deg)}
+    75%{transform:translate(-14px,-22px) rotate(3deg)}
+    100%{transform:translate(0,0) rotate(-3deg)}
+  }
+  @keyframes flap{
+    0%,100%{transform:scaleX(1)}
+    50%{transform:scaleX(.4)}
+  }
+  .flutters{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+
+  /* ---------- intro cover ---------- */
+  .intro{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:24px;
+    background:
+      radial-gradient(120% 90% at 50% -10%, #fff 0%, var(--blush-soft) 45%, var(--lavender-soft) 100%);
+    transition:opacity .85s ease,visibility .85s ease
+  }
+  .intro.hide{opacity:0;visibility:hidden}
+  .intro-name{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:600;
+    font-size:clamp(3.4rem,15vw,7rem);color:var(--lavender-deep);margin:.2rem 0 0
+  }
+  .intro .kicker{color:var(--lavender-deep)}
+  .intro-turns{
+    letter-spacing:.4em;text-transform:uppercase;font-size:clamp(.85rem,3vw,1.1rem);
+    color:var(--ink-soft);margin:.6rem 0 1.4rem
+  }
+  .intro-date{color:var(--ink-soft);margin:0 0 1.8rem}
+
+  /* ---------- opening butterfly burst ---------- */
+  .burst{
+    position:fixed;top:-8%;left:0;z-index:85;pointer-events:none;
+    opacity:0;animation:burstFall linear forwards
+  }
+  @keyframes burstFall{
+    0%{transform:translate3d(0,-10vh,0) rotate(-12deg);opacity:.95}
+    100%{transform:translate3d(38px,115vh,0) rotate(640deg);opacity:0}
+  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -86,37 +140,38 @@
     scroll-snap-align:start;
     padding:0 0 clamp(2rem,7vw,4rem);
     background:
-      radial-gradient(120% 90% at 50% -10%, #fff6e3 0%, var(--pink-soft) 45%, var(--cream) 100%);
+      radial-gradient(120% 90% at 50% -10%, #fff 0%, var(--blush-soft) 45%, var(--lavender-soft) 100%);
   }
   .hero-inner{position:relative;z-index:2;padding-top:clamp(.75rem,3vw,1.5rem)}
   .hero .kicker{
-    font-size:clamp(.8rem,2.4vw,.95rem);letter-spacing:.3em;text-transform:uppercase;
-    color:var(--marigold-deep);font-weight:700;margin:0 0 .4rem
+    font-size:clamp(.78rem,2.4vw,.95rem);letter-spacing:.34em;text-transform:uppercase;
+    color:var(--lavender-deep);font-weight:700;margin:0 0 .4rem
   }
   .hero-name{
-    font-size:clamp(2.9rem,13vw,6rem);color:var(--rose);letter-spacing:.02em;margin:0
+    font-size:clamp(3.4rem,15vw,7rem);color:var(--lavender-deep);letter-spacing:.02em;margin:0;
+    text-shadow:0 0 34px rgba(184,165,227,.6)
   }
   .hero-turns{
-    font-size:clamp(.95rem,3.2vw,1.25rem);letter-spacing:.34em;text-transform:uppercase;
+    font-size:clamp(.9rem,3vw,1.15rem);letter-spacing:.4em;text-transform:uppercase;
     color:var(--ink-soft);margin:.3rem 0 1.6rem
   }
 
-  /* hero portrait in an arch frame with the "1" medallion tucked at its base */
+  /* hero portrait in an arch frame with the butterfly "1" medallion */
   .hero-portrait{
     position:relative;width:min(340px,78vw);margin:0 auto
   }
   .hero-portrait .arch{
-    border:3px solid var(--gold-light);
+    border:3px solid var(--lavender);
     border-radius:50% 50% 16px 16px / 34% 34% 16px 16px;
-    overflow:hidden;aspect-ratio:3/4;background:var(--pink-soft);
-    box-shadow:0 16px 40px rgba(201,154,46,.3)
+    overflow:hidden;aspect-ratio:3/4;background:var(--blush-soft);
+    box-shadow:0 16px 40px rgba(142,118,201,.35)
   }
   .hero-portrait .arch img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
   .badge{
     position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);
-    width:104px;height:104px
+    width:110px;height:110px
   }
-  .badge svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 14px rgba(194,24,91,.28))}
+  .badge svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 14px rgba(142,118,201,.35))}
   .badge .glow{animation:diya 3.4s ease-in-out infinite}
   @keyframes diya{0%,100%{opacity:.55}50%{opacity:1}}
 
@@ -125,32 +180,21 @@
   }
   .hero-when span{display:block;color:var(--ink-soft);font-weight:400;font-size:.95em}
 
-  .petals{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-  .petal{
-    position:absolute;top:-6%;width:14px;height:10px;border-radius:60% 40% 55% 45%;
-    background:linear-gradient(135deg,var(--marigold) 0%,var(--marigold-deep) 100%);
-    opacity:.75;animation:fall linear infinite
-  }
-  @keyframes fall{
-    0%{transform:translate3d(0,-10vh,0) rotate(0deg)}
-    100%{transform:translate3d(22px,110vh,0) rotate(540deg)}
-  }
-
   /* ---------- countdown ---------- */
   .countdown{
     display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;margin:0 auto
   }
   @media(min-width:620px){.countdown{grid-template-columns:repeat(4,1fr)}}
   .cd-cell{
-    position:relative;background:#fff;border:1px solid var(--gold-light);border-radius:14px;
-    padding:1.1rem .5rem;text-align:center;box-shadow:0 6px 18px rgba(201,154,46,.12)
+    position:relative;background:var(--cream);border:1px solid var(--lavender);border-radius:14px;
+    padding:1.1rem .5rem;text-align:center;box-shadow:0 6px 18px rgba(184,165,227,.18)
   }
   .cd-cell::before{
     content:"";position:absolute;inset:5px;border-radius:10px;
-    border:1px dashed rgba(201,154,46,.45);pointer-events:none
+    border:1px dashed var(--lavender);pointer-events:none
   }
   .cd-num{
-    display:block;font-size:clamp(1.9rem,7vw,2.6rem);font-weight:700;color:var(--rose);
+    display:block;font-size:clamp(1.9rem,7vw,2.6rem);font-weight:700;color:var(--lavender-deep);
     font-variant-numeric:tabular-nums;line-height:1
   }
   .cd-label{
@@ -158,7 +202,7 @@
     text-transform:uppercase;color:var(--ink-soft)
   }
   .cd-done{
-    text-align:center;font-size:clamp(1.3rem,5vw,1.9rem);color:var(--rose);
+    text-align:center;font-size:clamp(1.3rem,5vw,1.9rem);color:var(--lavender-deep);
     font-family:"Iowan Old Style",Palatino,Georgia,serif
   }
 
@@ -168,9 +212,9 @@
   }
   @media(min-width:760px){.band{grid-template-columns:1fr 1fr}}
   .band button{
-    border:2px solid var(--gold-light);border-radius:16px;overflow:hidden;padding:0;
-    background:var(--pink-soft);cursor:pointer;aspect-ratio:16/9;
-    box-shadow:0 10px 26px rgba(201,154,46,.16);
+    border:2px solid var(--lavender);border-radius:16px;overflow:hidden;padding:0;
+    background:var(--blush-soft);cursor:pointer;aspect-ratio:16/9;
+    box-shadow:0 10px 26px rgba(184,165,227,.25);
     transition:transform .25s ease
   }
   .band button:hover,.band button:focus-visible{transform:translateY(-3px)}
@@ -182,32 +226,35 @@
   /* ---------- invitation note ---------- */
   .note{
     position:relative;text-align:center;
-    background:linear-gradient(180deg,#fff 0%,var(--pink-soft) 100%);
-    border:1px solid var(--gold-light);border-radius:18px;
+    background:linear-gradient(180deg,var(--cream) 0%,var(--blush-soft) 100%);
+    border:1px solid var(--lavender);border-radius:18px;
     padding:clamp(2rem,6vw,3rem) clamp(1.25rem,5vw,2.75rem);
-    box-shadow:0 10px 30px rgba(194,24,91,.08)
+    box-shadow:0 10px 30px rgba(142,118,201,.15)
   }
-  .corner{position:absolute;width:44px;height:44px;opacity:.75}
+  .corner{position:absolute;width:44px;height:44px;opacity:.8}
   .corner.tl{top:8px;left:8px}
   .corner.tr{top:8px;right:8px;transform:scaleX(-1)}
   .corner.bl{bottom:8px;left:8px;transform:scaleY(-1)}
   .corner.br{bottom:8px;right:8px;transform:scale(-1,-1)}
+  .note .eyebrow{color:var(--lavender-deep)}
+  .note .eyebrow::before,.note .eyebrow::after{background:var(--lavender)}
+  .note .section-title{color:var(--lavender-deep)}
   .note p{color:var(--ink-soft)}
   .note .hosts{
     margin:1.25rem 0 0;font-family:"Iowan Old Style",Palatino,Georgia,serif;
-    font-size:1.2rem;color:var(--rose)
+    font-size:1.2rem;color:var(--lavender-deep)
   }
 
   /* ---------- details ---------- */
   .details{
     max-width:680px;margin:0 auto;display:grid;gap:2px;
-    background:var(--gold-light);border:1px solid var(--gold-light);border-radius:16px;
+    background:var(--lavender);border:1px solid var(--lavender);border-radius:16px;
     overflow:hidden
   }
-  .row{display:flex;gap:14px;align-items:flex-start;background:#fff;padding:1.1rem 1.25rem}
-  .row svg{flex:0 0 22px;width:22px;height:22px;color:var(--gold);margin-top:2px}
+  .row{display:flex;gap:14px;align-items:flex-start;background:var(--cream);padding:1.1rem 1.25rem}
+  .row svg{flex:0 0 22px;width:22px;height:22px;color:var(--lavender-deep);margin-top:2px}
   .row-label{
-    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lavender-deep);
     font-weight:700;margin:0
   }
   .row-value{margin:.15rem 0 0;font-weight:600}
@@ -219,105 +266,63 @@
   .frame{width:calc((100% - 48px)/4)}
   @media(max-width:699px){.frame{width:calc((100% - 16px)/2)}}
   .frame{
-    position:relative;border:2px solid var(--gold-light);
+    position:relative;border:2px solid var(--lavender);
     border-radius:50% 50% 12px 12px / 32% 32% 12px 12px;
-    overflow:hidden;aspect-ratio:3/4;background:var(--pink-soft);
+    overflow:hidden;aspect-ratio:3/4;background:var(--blush-soft);
     padding:0;cursor:pointer;
-    box-shadow:0 8px 22px rgba(201,154,46,.16);
+    box-shadow:0 8px 22px rgba(184,165,227,.25);
     transition:transform .25s ease,box-shadow .25s ease
   }
-  .frame:hover,.frame:focus-visible{transform:translateY(-4px);box-shadow:0 14px 28px rgba(201,154,46,.26)}
+  .frame:hover,.frame:focus-visible{transform:translateY(-4px);box-shadow:0 14px 28px rgba(142,118,201,.4)}
   .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
   .frame.is-empty{
     display:flex;align-items:center;justify-content:center;cursor:default;
-    background:repeating-linear-gradient(45deg,var(--pink-soft) 0 10px,#fdf5e6 10px 20px)
+    background:repeating-linear-gradient(45deg,var(--blush-soft) 0 10px,var(--lavender-soft) 10px 20px)
   }
   .frame.is-empty span{
-    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lavender-deep);
     font-weight:700
   }
 
-  /* family photos: soft rectangles rather than arches */
+  /* family photos: one centered card */
   .family{display:flex;justify-content:center;gap:16px}
   .fcard{
-    border:2px solid var(--gold-light);border-radius:16px;overflow:hidden;padding:0;
-    background:var(--pink-soft);cursor:pointer;
-    /* matches the 3:4 family photos exactly, so nobody gets cropped out */
+    border:2px solid var(--lavender);border-radius:16px;
+    overflow:hidden;padding:0;background:var(--blush-soft);cursor:pointer;
     aspect-ratio:3/4;width:min(340px,100%);
-    box-shadow:0 10px 26px rgba(194,24,91,.14);
+    box-shadow:0 10px 26px rgba(142,118,201,.3);
     transition:transform .25s ease
   }
   .fcard:hover,.fcard:focus-visible{transform:translateY(-4px)}
   .fcard img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
 
+  /* big watermark butterflies across the page */
+  .big-bfly{position:fixed;z-index:0;pointer-events:none;opacity:.12;animation:floaty 14s ease-in-out infinite}
+
   /* ---------- lightbox ---------- */
   .lightbox{
-    position:fixed;inset:0;z-index:50;display:none;
-    background:rgba(74,44,42,.94);padding:24px;
+    position:fixed;inset:0;z-index:90;display:none;
+    background:rgba(74,60,90,.95);padding:24px;
     align-items:center;justify-content:center
   }
   .lightbox.open{display:flex}
   .lightbox img{
     max-width:100%;max-height:calc(100vh - 96px);border-radius:10px;
-    border:3px solid var(--gold-light)
+    border:3px solid var(--lavender)
   }
   .lb-btn{
-    position:absolute;background:rgba(0,0,0,.35);border:0;color:#fff;cursor:pointer;
+    position:absolute;background:rgba(255,255,255,.12);border:1px solid var(--lavender);
+    color:#fff;cursor:pointer;
     width:48px;height:48px;border-radius:50%;font-size:1.7rem;line-height:1;
     display:flex;align-items:center;justify-content:center
   }
-  .lb-btn:hover{background:rgba(0,0,0,.6)}
+  .lb-btn:hover{background:rgba(255,255,255,.22)}
   #lb-prev{left:14px;top:50%;transform:translateY(-50%)}
   #lb-next{right:14px;top:50%;transform:translateY(-50%)}
   #lb-close{top:14px;right:14px;font-size:2rem}
   .lb-count{
     position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
-    color:#f7e3c0;font-size:.85rem;letter-spacing:.12em
-  }
-
-  /* ---------- directions button ---------- */
-  .directions{text-align:center;margin:1.75rem 0 0}
-  .btn{
-    display:inline-flex;align-items:center;gap:.55rem;
-    background:linear-gradient(135deg,var(--marigold) 0%,var(--marigold-deep) 100%);
-    color:#fff;text-decoration:none;font-weight:700;letter-spacing:.04em;
-    padding:.85rem 1.6rem;border-radius:999px;
-    box-shadow:0 8px 18px rgba(224,123,22,.32);
-    transition:transform .2s ease,box-shadow .2s ease
-  }
-  .btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 24px rgba(224,123,22,.42)}
-  .btn svg{width:18px;height:18px}
-
-  /* ---------- intro cover ---------- */
-  .intro{
-    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
-    text-align:center;padding:24px;
-    background:
-      radial-gradient(120% 90% at 50% -10%, #fff6e3 0%, var(--pink-soft) 45%, var(--cream) 100%);
-    transition:opacity .85s ease,visibility .85s ease
-  }
-  .intro.hide{opacity:0;visibility:hidden}
-  .intro-name{
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:600;
-    font-size:clamp(3.4rem,15vw,7rem);color:var(--rose);margin:.2rem 0 0
-  }
-  .intro .kicker{color:var(--marigold-deep)}
-  .intro-turns{
-    letter-spacing:.4em;text-transform:uppercase;font-size:clamp(.85rem,3vw,1.1rem);
-    color:var(--ink-soft);margin:.6rem 0 1.4rem
-  }
-  .intro-date{color:var(--ink-soft);margin:0 0 1.8rem}
-
-  /* ---------- opening petal burst ---------- */
-  .burst{
-    position:fixed;top:-8%;left:0;z-index:85;pointer-events:none;
-    border-radius:60% 40% 55% 45%;
-    background:linear-gradient(135deg,var(--marigold) 0%,var(--marigold-deep) 100%);
-    opacity:0;animation:burstFall linear forwards
-  }
-  @keyframes burstFall{
-    0%{transform:translate3d(0,-10vh,0) rotate(0deg);opacity:.95}
-    100%{transform:translate3d(34px,115vh,0) rotate(640deg);opacity:0}
+    color:#e9dcff;font-size:.85rem;letter-spacing:.12em
   }
 
   /* ---------- page outline rail ---------- */
@@ -327,18 +332,18 @@
   }
   .rail button{
     width:10px;height:10px;border-radius:50%;padding:0;cursor:pointer;
-    border:1.5px solid var(--gold);background:transparent;position:relative;
+    border:1.5px solid var(--lavender-deep);background:transparent;position:relative;
     transition:transform .2s ease,background .2s ease
   }
   .rail button:hover{transform:scale(1.35)}
   .rail button.active{
-    background:var(--gold);box-shadow:0 0 10px rgba(201,154,46,.55);transform:scale(1.25)
+    background:var(--lavender-deep);box-shadow:0 0 10px rgba(142,118,201,.6);transform:scale(1.25)
   }
   .rail button .tip{
     position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
     white-space:nowrap;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
-    font-weight:700;color:var(--gold);background:#fff;
-    border:1px solid var(--gold-light);padding:.32rem .7rem;border-radius:999px;
+    font-weight:700;color:var(--lavender-deep);background:#fff;
+    border:1px solid var(--lavender);padding:.32rem .7rem;border-radius:999px;
     opacity:0;pointer-events:none;transition:opacity .2s ease
   }
   .rail button:hover .tip,.rail button:focus-visible .tip{opacity:1}
@@ -347,24 +352,37 @@
   /* ---------- music toggle ---------- */
   .music-btn{
     position:fixed;right:16px;bottom:16px;z-index:80;width:46px;height:46px;border-radius:50%;
-    border:1.5px solid var(--gold);background:rgba(255,250,242,.9);color:var(--rose);
+    border:1.5px solid var(--lavender-deep);background:rgba(255,255,255,.9);color:var(--lavender-deep);
     display:flex;align-items:center;justify-content:center;cursor:pointer;
-    box-shadow:0 6px 16px rgba(201,154,46,.25)
+    box-shadow:0 6px 16px rgba(142,118,201,.2)
   }
   .music-btn:hover{background:#fff}
   .music-btn svg{width:20px;height:20px}
   .music-btn.is-playing{animation:pulse 2.2s ease-in-out infinite}
   @keyframes pulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(201,154,46,.4)}
-    50%{box-shadow:0 0 0 10px rgba(201,154,46,0)}
+    0%,100%{box-shadow:0 0 0 0 rgba(142,118,201,.4)}
+    50%{box-shadow:0 0 0 10px rgba(142,118,201,0)}
   }
+
+  /* ---------- directions button ---------- */
+  .directions{text-align:center;margin:1.75rem 0 0}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;
+    background:linear-gradient(135deg,var(--lavender) 0%,var(--lavender-deep) 100%);
+    color:#fff;text-decoration:none;font-weight:700;letter-spacing:.04em;
+    padding:.85rem 1.6rem;border-radius:999px;
+    box-shadow:0 8px 18px rgba(142,118,201,.35);
+    transition:transform .2s ease,box-shadow .2s ease
+  }
+  .btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 24px rgba(142,118,201,.45)}
+  .btn svg{width:18px;height:18px}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
-    .petals{display:none}
+    .flutters,.flutter-fixed{display:none}
     .badge .glow{animation:none;opacity:.9}
     .music-btn.is-playing{animation:none}
     .reveal{opacity:1;transform:none;transition:none}
@@ -389,8 +407,7 @@
     musicUrl       path to an mp3 (e.g. "music.mp3") for the music toggle;
                    "" hides the toggle entirely
   PHOTOS: heroPhoto / bandPhotos / galleryPhotos / familyPhotos below
-  hold the filenames from the images/ folder. Filenames with spaces
-  and brackets are fine — they are URL-encoded automatically.
+  hold the filenames from the images/ folder.
   Any file that fails to load turns into a decorative placeholder.
   ============================================================
 -->
@@ -439,14 +456,20 @@
   };
 </script>
 
+<!-- ================= FLOATING BUTTERFLIES ================= -->
+<div class="flutter-fixed" id="flutter-fixed" aria-hidden="true"></div>
+
 <!-- ================= INTRO COVER ================= -->
 <div class="intro" id="intro">
+  <div class="flutters" aria-hidden="true"></div>
   <div>
     <p class="kicker">You are invited</p>
     <h1 class="intro-name">Vrunda</h1>
     <p class="intro-turns">turns one</p>
     <p class="intro-date" id="intro-date"></p>
-    <button class="btn" id="open-invite" type="button">Open Invitation</button>
+    <div class="open-wrap">
+      <button class="btn" id="open-invite" type="button">Open Invitation</button>
+    </div>
   </div>
 </div>
 
@@ -463,11 +486,11 @@
 <!-- ================= HERO ================= -->
 <header class="hero" id="hero">
   <svg class="toran" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 8 Q300 78 600 78 Q900 78 1200 8" fill="none" stroke="#7a4a12" stroke-width="3"/>
+    <path d="M0 8 Q300 78 600 78 Q900 78 1200 8" fill="none" stroke="#b8a5e3" stroke-width="3"/>
     <g id="toran-flowers"></g>
   </svg>
 
-  <div class="petals" aria-hidden="true"></div>
+  <div class="flutters" aria-hidden="true"></div>
 
   <div class="wrap hero-inner">
     <h1 class="hero-name" id="hero-name">Vrunda</h1>
@@ -477,25 +500,24 @@
       <div class="arch"><img id="hero-photo" alt="Vrunda" fetchpriority="high"></div>
       <div class="badge">
         <svg viewBox="0 0 120 120" aria-label="One year">
-          <circle cx="60" cy="60" r="56" fill="#fffaf2" stroke="#c99a2e" stroke-width="2"/>
-          <circle cx="60" cy="60" r="48" fill="none" stroke="#c99a2e" stroke-width="1" stroke-dasharray="4 6"/>
-          <circle class="glow" cx="60" cy="60" r="44" fill="url(#halo)"/>
+          <g fill="#b8a5e3">
+            <path d="M60 62 C48 40 20 38 16 54 C12 70 42 76 60 64 Z"/>
+            <path d="M60 62 C72 40 100 38 104 54 C108 70 78 76 60 64 Z"/>
+            <path d="M60 66 C52 78 42 86 32 86 C46 86 58 78 60 68 Z"/>
+            <path d="M60 66 C68 78 78 86 88 86 C74 86 62 78 60 68 Z"/>
+          </g>
+          <circle class="glow" cx="60" cy="62" r="30" fill="#fffaf7" stroke="#8e76c9" stroke-width="2"/>
+          <circle cx="60" cy="62" r="24" fill="none" stroke="#8e76c9" stroke-width="1" stroke-dasharray="4 6"/>
           <g id="badge-petals"></g>
-          <defs>
-            <radialGradient id="halo">
-              <stop offset="50%" stop-color="#ffe9b8" stop-opacity="0"/>
-              <stop offset="100%" stop-color="#f2a10a" stop-opacity=".5"/>
-            </radialGradient>
-          </defs>
-          <text x="60" y="82" text-anchor="middle" font-size="58" font-weight="700"
-                font-family="Iowan Old Style, Palatino, Georgia, serif" fill="#c2185b">1</text>
+          <text x="60" y="74" text-anchor="middle" font-size="44" font-weight="700"
+                font-family="Iowan Old Style, Palatino, Georgia, serif" fill="#8e76c9">1</text>
         </svg>
       </div>
     </div>
 
     <p class="hero-when">
-      <span id="hero-date">{{PARTY_DATE}}</span>
-      <span id="hero-time">{{PARTY_TIME}}</span>
+      <span id="hero-date"></span>
+      <span id="hero-time"></span>
     </p>
   </div>
 </header>
@@ -531,25 +553,25 @@
   <div class="wrap narrow">
     <div class="note">
       <svg class="corner tl" viewBox="0 0 60 60" aria-hidden="true">
-        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+        <g fill="none" stroke="#8e76c9" stroke-width="1.6">
           <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
           <circle cx="18" cy="18" r="4"/>
         </g>
       </svg>
       <svg class="corner tr" viewBox="0 0 60 60" aria-hidden="true">
-        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+        <g fill="none" stroke="#8e76c9" stroke-width="1.6">
           <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
           <circle cx="18" cy="18" r="4"/>
         </g>
       </svg>
       <svg class="corner bl" viewBox="0 0 60 60" aria-hidden="true">
-        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+        <g fill="none" stroke="#8e76c9" stroke-width="1.6">
           <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
           <circle cx="18" cy="18" r="4"/>
         </g>
       </svg>
       <svg class="corner br" viewBox="0 0 60 60" aria-hidden="true">
-        <g fill="none" stroke="#c99a2e" stroke-width="1.6">
+        <g fill="none" stroke="#8e76c9" stroke-width="1.6">
           <path d="M4 56 Q4 4 56 4"/><path d="M12 56 Q12 12 56 12" stroke-dasharray="3 5"/>
           <circle cx="18" cy="18" r="4"/>
         </g>
@@ -565,7 +587,7 @@
         Please join us as we celebrate our little girl&rsquo;s very first birthday.
         Come for the sweets, stay for the laughter, and help us bless her year ahead.
       </p>
-      <p class="hosts">&mdash; <span id="hosts-name">{{PARENT_NAMES}}</span></p>
+      <p class="hosts">&mdash; <span id="hosts-name"></span></p>
     </div>
   </div>
 </section>
@@ -592,13 +614,13 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>
         </svg>
-        <div><p class="row-label">Date</p><p class="row-value" id="d-date">{{PARTY_DATE}}</p></div>
+        <div><p class="row-label">Date</p><p class="row-value" id="d-date"></p></div>
       </div>
       <div class="row">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
         </svg>
-        <div><p class="row-label">Time</p><p class="row-value" id="d-time">{{PARTY_TIME}}</p></div>
+        <div><p class="row-label">Time</p><p class="row-value" id="d-time"></p></div>
       </div>
       <div class="row">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -606,7 +628,7 @@
         </svg>
         <div>
           <p class="row-label">Venue</p>
-          <p class="row-value" id="d-venue">{{VENUE_NAME}}</p>
+          <p class="row-value" id="d-venue"></p>
         </div>
       </div>
     </div>
@@ -649,6 +671,31 @@
   var setText = function (id, value) { var el = $(id); if (el) el.textContent = value; };
   var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var SVH = (window.CSS && CSS.supports && CSS.supports("height", "100svh")) ? "100svh" : "100vh";
+  var NS = "http://www.w3.org/2000/svg";
+
+  var BFLY_COLORS = ["#b8a5e3", "#f6b8d0", "#9fd8c4", "#a8d3ee", "#e8c86a"];
+  var BODY_COLOR = "#5a3d6e";
+  var SPOT_COLOR = "rgba(255,255,255,.75)";
+  var BFLY_PATHS =
+    '<path d="M50 30 C45 12 30 6 16 12 C5 17 3 32 10 42 C16 50 34 52 42 48 C45 52 49 52 50 48 Z" fill="WCOLOR"/>' +
+    '<path d="M50 30 C55 12 70 6 84 12 C95 17 97 32 90 42 C84 50 66 52 58 48 C55 52 51 52 50 48 Z" fill="WCOLOR"/>' +
+    '<path d="M50 50 C46 58 38 64 28 66 C18 68 12 62 15 54 C17 46 30 46 36 52 C40 55 46 55 50 52 Z" fill="WCOLOR"/>' +
+    '<path d="M50 50 C54 58 62 64 72 66 C82 68 88 62 85 54 C83 46 70 46 64 52 C60 55 54 55 50 52 Z" fill="WCOLOR"/>' +
+    '<circle cx="30" cy="22" r="6" fill="SPOT"/>' +
+    '<circle cx="70" cy="22" r="6" fill="SPOT"/>' +
+    '<circle cx="30" cy="57" r="3.5" fill="SPOT"/>' +
+    '<circle cx="70" cy="57" r="3.5" fill="SPOT"/>' +
+    '<ellipse cx="50" cy="48" rx="3.2" ry="22" fill="' + BODY_COLOR + '"/>' +
+    '<circle cx="40" cy="8" r="1.8" fill="' + BODY_COLOR + '"/>' +
+    '<circle cx="60" cy="8" r="1.8" fill="' + BODY_COLOR + '"/>' +
+    '<path d="M50 27 C47 16 44 12 40 8 M50 27 C53 16 56 12 60 8" stroke="' + BODY_COLOR +
+    '" stroke-width="2.5" fill="none" stroke-linecap="round"/>';
+
+  function butterflySvg(color, size) {
+    return '<svg class="butterfly-svg" viewBox="0 0 100 80" width="' + size + '" height="' +
+      Math.round(size * 0.8) + '" aria-hidden="true">' +
+      BFLY_PATHS.replace(/WCOLOR/g, color).replace(/SPOT/g, SPOT_COLOR) + '</svg>';
+  }
 
   /* ---------- fit every page to the screen ---------- */
   function fitPages() {
@@ -678,9 +725,6 @@
     clearTimeout(fitTimer);
     fitTimer = setTimeout(fitPages, 150);
   });
-
-  // filenames contain spaces and brackets, so encode each one for use in a URL
-  var src = function (file) { return IMG + encodeURIComponent(file); };
 
   /* ---------- fill in content from CONFIG ---------- */
   setText("hero-name", C.babyName);
@@ -718,59 +762,108 @@
     heroImg.alt = C.babyName + " dressed up for her first birthday";
   }
 
-  /* ---------- toran garland flowers ---------- */
-  var NS = "http://www.w3.org/2000/svg";
+  /* filenames contain spaces and brackets, so encode each one for use in a URL */
+  function src(file) { return IMG + encodeURIComponent(file); }
+
+  /* ---------- butterfly garland along the string (two quadratic segments,
+       matching the SVG path exactly so the butterflies hang off it) ---------- */
   var toran = $("toran-flowers");
   if (toran) {
-    for (var i = 0; i <= 40; i++) {
-      var t = i / 40;
-      // same quadratic curve as the string above
-      var x = 2 * (1 - t) * t * 600 + t * t * 1200;
-      var y = (1 - t) * (1 - t) * 8 + 2 * (1 - t) * t * 78 + t * t * 8;
-      var drop = 14 + (i % 4) * 9;          // alternating hanging lengths
+    function garland(t) {
+      var u, x, y;
+      if (t < 0.5) {
+        u = t * 2;
+        x = 2 * (1 - u) * u * 300 + u * u * 600;
+        y = (1 - u) * (1 - u) * 8 + 2 * (1 - u) * u * 78 + u * u * 78;
+      } else {
+        u = (t - 0.5) * 2;
+        x = 600 + 2 * (1 - u) * u * 300 + u * u * 600;
+        y = (1 - u) * (1 - u) * 78 + 2 * (1 - u) * u * 78 + u * u * 8;
+      }
+      return { x: x, y: y };
+    }
+    for (var i = 0; i <= 28; i++) {
+      var t = i / 28;
+      var g = garland(t);
+      var drop = 10 + (i % 4) * 8;
       var stem = document.createElementNS(NS, "line");
-      stem.setAttribute("x1", x); stem.setAttribute("y1", y);
-      stem.setAttribute("x2", x); stem.setAttribute("y2", y + drop);
-      stem.setAttribute("stroke", "#7a9a3a");
+      stem.setAttribute("x1", g.x); stem.setAttribute("y1", g.y);
+      stem.setAttribute("x2", g.x); stem.setAttribute("y2", g.y + drop);
+      stem.setAttribute("stroke", "#c9b8ea");
       stem.setAttribute("stroke-width", "1.5");
       toran.appendChild(stem);
 
-      var bud = document.createElementNS(NS, "circle");
-      bud.setAttribute("cx", x);
-      bud.setAttribute("cy", y + drop + 6);
-      bud.setAttribute("r", i % 2 ? 7 : 6);
-      bud.setAttribute("fill", i % 3 === 0 ? "#c2185b" : (i % 2 ? "#f2a10a" : "#e07b16"));
-      toran.appendChild(bud);
+      var scale = 0.16 + (i % 3) * 0.03;
+      var group = document.createElementNS(NS, "g");
+      group.setAttribute("transform", "translate(" + g.x.toFixed(1) + " " + (g.y + drop).toFixed(1) +
+        ") scale(" + (i % 2 ? -scale : scale) + " " + scale + ")");
+      group.innerHTML = BFLY_PATHS.replace(/WCOLOR/g, BFLY_COLORS[i % BFLY_COLORS.length]);
+      toran.appendChild(group);
     }
   }
 
-  /* ---------- petal ring around the "1" badge ---------- */
+  /* ---------- sparkle dots around the "1" medallion ---------- */
   var ring = $("badge-petals");
   if (ring) {
-    for (var p = 0; p < 20; p++) {
-      var a = (p / 20) * Math.PI * 2;
+    for (var p = 0; p < 14; p++) {
+      var a = (p / 14) * Math.PI * 2;
       var c = document.createElementNS(NS, "circle");
-      c.setAttribute("cx", (60 + Math.cos(a) * 52).toFixed(2));
-      c.setAttribute("cy", (60 + Math.sin(a) * 52).toFixed(2));
-      c.setAttribute("r", p % 2 ? 3 : 1.8);
-      c.setAttribute("fill", p % 3 === 0 ? "#c2185b" : "#f2a10a");
+      c.setAttribute("cx", (60 + Math.cos(a) * 34).toFixed(2));
+      c.setAttribute("cy", (62 + Math.sin(a) * 34).toFixed(2));
+      c.setAttribute("r", p % 2 ? 2.6 : 1.6);
+      c.setAttribute("fill", p % 3 === 0 ? "#8e76c9" : "#f6b8d0");
       ring.appendChild(c);
     }
   }
 
-  /* ---------- drifting petals ---------- */
-  var petalBox = document.querySelector(".petals");
-  if (petalBox) {
-    for (var q = 0; q < 16; q++) {
-      var el = document.createElement("i");
-      el.className = "petal";
-      el.style.left = (q * 6.5 + 2) + "%";
-      el.style.animationDuration = (9 + (q % 5) * 2.5) + "s";
-      el.style.animationDelay = (-q * 1.3) + "s";
-      el.style.transform = "scale(" + (0.7 + (q % 4) * 0.2) + ")";
-      petalBox.appendChild(el);
+  /* ---------- fluttering butterflies ---------- */
+  function addFlutters(box, n, size) {
+    if (REDUCED) return;
+    for (var q = 0; q < n; q++) {
+      var w = document.createElement("i");
+      w.style.left = (4 + Math.random() * 90).toFixed(1) + "%";
+      w.style.top = (4 + Math.random() * 88).toFixed(1) + "%";
+      w.style.animationDuration = (6 + Math.random() * 6).toFixed(2) + "s";
+      w.style.animationDelay = (-Math.random() * 8).toFixed(2) + "s";
+      w.innerHTML = butterflySvg(BFLY_COLORS[q % BFLY_COLORS.length], size + (q % 3) * 8);
+      box.appendChild(w);
     }
   }
+  addFlutters($("flutter-fixed"), 7, 22);
+  document.querySelectorAll(".intro .flutters").forEach(function (b) {
+    addFlutters(b, 3, 30);
+    var big = document.createElement("i");
+    big.style.left = "calc(50% - 36px)";
+    big.style.top = "2%";
+    big.style.animationDuration = "10s";
+    big.style.animationDelay = "-3s";
+    big.innerHTML = butterflySvg(BFLY_COLORS[0], 72);
+    b.appendChild(big);
+  });
+  var heroFlutters = document.querySelector(".hero .flutters");
+  if (heroFlutters) addFlutters(heroFlutters, 6, 24);
+
+  /* ---------- big watermark butterflies ---------- */
+  function addBig() {
+    if (REDUCED) return;
+    [
+      ["#b8a5e3", "6%", "14%", "150px"],
+      ["#f6b8d0", "82%", "20%", "120px"],
+      ["#9fd8c4", "8%", "60%", "110px"],
+      ["#a8d3ee", "78%", "68%", "160px"],
+      ["#e8c86a", "44%", "88%", "120px"]
+    ].forEach(function (b, i) {
+      var el = document.createElement("i");
+      el.className = "big-bfly";
+      el.style.left = b[1];
+      el.style.top = b[2];
+      el.style.width = b[3];
+      el.style.animationDelay = (-i * 2.5) + "s";
+      el.innerHTML = butterflySvg(b[0], 100);
+      document.body.appendChild(el);
+    });
+  }
+  addBig();
 
   /* ---------- countdown ---------- */
   var target = new Date(C.partyDateTime).getTime();
@@ -786,7 +879,7 @@
     var diff = target - Date.now();
     if (diff <= 0) {
       cd.innerHTML = '<p class="cd-done" style="grid-column:1/-1">' +
-        "🌼 The celebration has begun! 🌼</p>";
+        "🦋 The celebration has begun! 🦋</p>";
       return true;    // stop ticking
     }
     var s = Math.floor(diff / 1000);
@@ -940,15 +1033,14 @@
     }
   }
 
-  /* ---------- opening burst ---------- */
+  /* ---------- opening butterfly burst ---------- */
   function burst() {
     if (REDUCED) return;
-    for (var b = 0; b < 34; b++) {
+    for (var b = 0; b < 30; b++) {
       var p = document.createElement("i");
       p.className = "burst";
       p.style.left = (Math.random() * 100).toFixed(1) + "%";
-      p.style.width = (8 + Math.random() * 10).toFixed(1) + "px";
-      p.style.height = (6 + Math.random() * 8).toFixed(1) + "px";
+      p.innerHTML = butterflySvg(BFLY_COLORS[b % BFLY_COLORS.length], 18 + (b % 4) * 5);
       p.style.animationDuration = (2.2 + Math.random() * 1.8).toFixed(2) + "s";
       p.style.animationDelay = (Math.random() * 0.7).toFixed(2) + "s";
       document.body.appendChild(p);
