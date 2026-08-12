@@ -64,6 +64,7 @@
     padding:clamp(2rem,6vw,4rem) 0;
     scroll-snap-align:start
   }
+  .hero.fitted,section.fitted{overflow:hidden}
 
   .eyebrow{
     text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;
@@ -214,8 +215,9 @@
 
   /* ---------- galleries ---------- */
   #gallery{padding:clamp(.75rem,2vw,1.5rem) 0}
-  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media(min-width:700px){.gallery{grid-template-columns:repeat(4,1fr)}}
+  .gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+  .frame{width:calc((100% - 48px)/4)}
+  @media(max-width:699px){.frame{width:calc((100% - 16px)/2)}}
   .frame{
     position:relative;border:2px solid var(--gold-light);
     border-radius:50% 50% 12px 12px / 32% 32% 12px 12px;
@@ -286,15 +288,76 @@
   .btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 24px rgba(224,123,22,.42)}
   .btn svg{width:18px;height:18px}
 
-  /* ---------- footer ---------- */
-  footer{text-align:center;padding-bottom:2.5rem;scroll-snap-align:start}
-  .footer-strip{
-    height:10px;
-    background:repeating-linear-gradient(90deg,var(--marigold) 0 14px,var(--rose) 14px 28px);
-    opacity:.85;margin-bottom:2rem
+  /* ---------- intro cover ---------- */
+  .intro{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:24px;
+    background:
+      radial-gradient(120% 90% at 50% -10%, #fff6e3 0%, var(--pink-soft) 45%, var(--cream) 100%);
+    transition:opacity .85s ease,visibility .85s ease
   }
-  footer .love{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.15rem;color:var(--rose);margin:0}
-  footer .tiny{font-size:.8rem;color:var(--ink-soft);margin:.4rem 0 0}
+  .intro.hide{opacity:0;visibility:hidden}
+  .intro-name{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:600;
+    font-size:clamp(3.4rem,15vw,7rem);color:var(--rose);margin:.2rem 0 0
+  }
+  .intro .kicker{color:var(--marigold-deep)}
+  .intro-turns{
+    letter-spacing:.4em;text-transform:uppercase;font-size:clamp(.85rem,3vw,1.1rem);
+    color:var(--ink-soft);margin:.6rem 0 1.4rem
+  }
+  .intro-date{color:var(--ink-soft);margin:0 0 1.8rem}
+
+  /* ---------- opening petal burst ---------- */
+  .burst{
+    position:fixed;top:-8%;left:0;z-index:85;pointer-events:none;
+    border-radius:60% 40% 55% 45%;
+    background:linear-gradient(135deg,var(--marigold) 0%,var(--marigold-deep) 100%);
+    opacity:0;animation:burstFall linear forwards
+  }
+  @keyframes burstFall{
+    0%{transform:translate3d(0,-10vh,0) rotate(0deg);opacity:.95}
+    100%{transform:translate3d(34px,115vh,0) rotate(640deg);opacity:0}
+  }
+
+  /* ---------- page outline rail ---------- */
+  .rail{
+    position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:80;
+    display:flex;flex-direction:column;gap:12px;align-items:flex-end
+  }
+  .rail button{
+    width:10px;height:10px;border-radius:50%;padding:0;cursor:pointer;
+    border:1.5px solid var(--gold);background:transparent;position:relative;
+    transition:transform .2s ease,background .2s ease
+  }
+  .rail button:hover{transform:scale(1.35)}
+  .rail button.active{
+    background:var(--gold);box-shadow:0 0 10px rgba(201,154,46,.55);transform:scale(1.25)
+  }
+  .rail button .tip{
+    position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+    white-space:nowrap;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;color:var(--gold);background:#fff;
+    border:1px solid var(--gold-light);padding:.32rem .7rem;border-radius:999px;
+    opacity:0;pointer-events:none;transition:opacity .2s ease
+  }
+  .rail button:hover .tip,.rail button:focus-visible .tip{opacity:1}
+  @media(max-width:560px){.rail{right:8px;gap:10px}}
+
+  /* ---------- music toggle ---------- */
+  .music-btn{
+    position:fixed;right:16px;bottom:16px;z-index:80;width:46px;height:46px;border-radius:50%;
+    border:1.5px solid var(--gold);background:rgba(255,250,242,.9);color:var(--rose);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    box-shadow:0 6px 16px rgba(201,154,46,.25)
+  }
+  .music-btn:hover{background:#fff}
+  .music-btn svg{width:20px;height:20px}
+  .music-btn.is-playing{animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(201,154,46,.4)}
+    50%{box-shadow:0 0 0 10px rgba(201,154,46,0)}
+  }
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
@@ -303,6 +366,7 @@
     html{scroll-behavior:auto}
     .petals{display:none}
     .badge .glow{animation:none;opacity:.9}
+    .music-btn.is-playing{animation:none}
     .reveal{opacity:1;transform:none;transition:none}
     .frame,.fcard,.btn,.band button{transition:none}
   }
@@ -321,7 +385,9 @@
     mapsLink       exact Google Maps pin for the Get Directions button;
                    "" falls back to a search for venueName + venueAddress
     hosts          who signs the invitation note
-    familyName     shown in the footer and the family section
+    familyName     shown in the family section
+    musicUrl       path to an mp3 (e.g. "music.mp3") for the music toggle;
+                   "" hides the toggle entirely
   PHOTOS: heroPhoto / bandPhotos / galleryPhotos / familyPhotos below
   hold the filenames from the images/ folder. Filenames with spaces
   and brackets are fine — they are URL-encoded automatically.
@@ -343,6 +409,8 @@
     mapsLink: "https://maps.app.goo.gl/tr6KhYYTdxxDZVCs7",
     hosts: "Shweta and Rohan",
     familyName: "Mithapelli Family",
+    // drop an mp3 in the project root and point here; "" hides the toggle.
+    musicUrl: "",
 
     // the pink-and-gold traditional portrait — best match for the theme
     heroPhoto: "hero.jpeg",
@@ -371,8 +439,29 @@
   };
 </script>
 
+<!-- ================= INTRO COVER ================= -->
+<div class="intro" id="intro">
+  <div>
+    <p class="kicker">You are invited</p>
+    <h1 class="intro-name">Vrunda</h1>
+    <p class="intro-turns">turns one</p>
+    <p class="intro-date" id="intro-date"></p>
+    <button class="btn" id="open-invite" type="button">Open Invitation</button>
+  </div>
+</div>
+
+<!-- ================= PAGE OUTLINE RAIL ================= -->
+<nav class="rail" id="rail" aria-label="Page outline"></nav>
+
+<!-- ================= MUSIC TOGGLE ================= -->
+<button class="music-btn" id="music-toggle" type="button" aria-label="Play background music" hidden>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+  </svg>
+</button>
+
 <!-- ================= HERO ================= -->
-<header class="hero">
+<header class="hero" id="hero">
   <svg class="toran" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 8 Q300 78 600 78 Q900 78 1200 8" fill="none" stroke="#7a4a12" stroke-width="3"/>
     <g id="toran-flowers"></g>
@@ -381,7 +470,6 @@
   <div class="petals" aria-hidden="true"></div>
 
   <div class="wrap hero-inner">
-    <p class="kicker">You are invited</p>
     <h1 class="hero-name" id="hero-name">Vrunda</h1>
     <p class="hero-turns">turns one</p>
 
@@ -544,15 +632,6 @@
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="footer-strip" aria-hidden="true"></div>
-  <div class="wrap">
-    <p class="love">With love, <span id="f-hosts">the Mithapelli Family</span></p>
-    <p class="tiny">Vrunda&rsquo;s First Birthday &middot; <span id="f-date">{{PARTY_DATE}}</span></p>
-  </div>
-</footer>
-
 <!-- ================= LIGHTBOX ================= -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button class="lb-btn" id="lb-close" aria-label="Close photo">&times;</button>
@@ -568,6 +647,37 @@
   var C = CONFIG;
   var $ = function (id) { return document.getElementById(id); };
   var setText = function (id, value) { var el = $(id); if (el) el.textContent = value; };
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var SVH = (window.CSS && CSS.supports && CSS.supports("height", "100svh")) ? "100svh" : "100vh";
+
+  /* ---------- fit every page to the screen ---------- */
+  function fitPages() {
+    var pages = document.querySelectorAll(".hero, section");
+    pages.forEach(function (pg) {
+      // the gallery is allowed to grow taller than the screen
+      if (pg.id === "gallery") return;
+      pg.classList.add("fitted");
+      pg.style.minHeight = SVH;
+      pg.style.height = SVH;
+      var wrap = pg.querySelector(".wrap, .hero-inner");
+      if (!wrap) return;
+      wrap.style.transform = "";
+      wrap.style.transformOrigin = "center center";
+      var cs = getComputedStyle(pg);
+      var avail = pg.clientHeight - (parseFloat(cs.paddingTop) || 0) - (parseFloat(cs.paddingBottom) || 0);
+      var need = wrap.getBoundingClientRect().height;
+      if (need > avail && need > 0) {
+        wrap.style.transform = "scale(" + (avail / need).toFixed(4) + ")";
+      }
+    });
+  }
+  fitPages();
+  window.addEventListener("load", fitPages);
+  var fitTimer = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(fitTimer);
+    fitTimer = setTimeout(fitPages, 150);
+  });
 
   // filenames contain spaces and brackets, so encode each one for use in a URL
   var src = function (file) { return IMG + encodeURIComponent(file); };
@@ -576,12 +686,11 @@
   setText("hero-name", C.babyName);
   setText("hero-date", C.dateText);
   setText("hero-time", C.timeText);
+  setText("intro-date", C.dateText + " · " + C.timeText);
   setText("hosts-name", C.hosts);
   setText("d-date", C.dateText);
   setText("d-time", C.timeText);
-  setText("f-hosts", "the " + C.familyName);
   setText("family-title", "With Love, From the " + C.familyName);
-  setText("f-date", C.dateText);
   document.title = C.babyName + " turns ONE — First Birthday Invitation";
 
   // venue row shows the name with the address underneath it
@@ -785,6 +894,115 @@
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- page outline rail ---------- */
+  var rail = $("rail");
+  if (rail) {
+    var pages = [
+      ["hero", "Welcome"],
+      ["countdown", "Counting Down"],
+      ["beginning", "Our Tiniest Days"],
+      ["note", "Invitation"],
+      ["gallery", "Little Moments"],
+      ["details", "Details"],
+      ["family", "Family"]
+    ];
+    pages.forEach(function (pg) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Go to " + pg[1]);
+      var tip = document.createElement("span");
+      tip.className = "tip";
+      tip.textContent = pg[1];
+      b.appendChild(tip);
+      b.addEventListener("click", function () {
+        var el = document.getElementById(pg[0]);
+        if (el) el.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
+      });
+      rail.appendChild(b);
+    });
+
+    if ("IntersectionObserver" in window) {
+      var railIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var buttons = rail.querySelectorAll("button");
+          buttons.forEach(function (b, i) {
+            b.classList.toggle("active", pages[i][0] === entry.target.id);
+          });
+        });
+      }, { rootMargin: "-45% 0px -45% 0px" });
+      pages.forEach(function (pg) {
+        var el = document.getElementById(pg[0]);
+        if (el) railIO.observe(el);
+      });
+    }
+  }
+
+  /* ---------- opening burst ---------- */
+  function burst() {
+    if (REDUCED) return;
+    for (var b = 0; b < 34; b++) {
+      var p = document.createElement("i");
+      p.className = "burst";
+      p.style.left = (Math.random() * 100).toFixed(1) + "%";
+      p.style.width = (8 + Math.random() * 10).toFixed(1) + "px";
+      p.style.height = (6 + Math.random() * 8).toFixed(1) + "px";
+      p.style.animationDuration = (2.2 + Math.random() * 1.8).toFixed(2) + "s";
+      p.style.animationDelay = (Math.random() * 0.7).toFixed(2) + "s";
+      document.body.appendChild(p);
+      (function (n) { setTimeout(function () { n.remove(); }, 4300); })(p);
+    }
+  }
+
+  /* ---------- music toggle ---------- */
+  var musicBtn = $("music-toggle");
+  var audio = null;
+  var NOTE_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
+    '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
+  var PAUSE_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
+    '<rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>';
+
+  function ensureAudio() {
+    if (!audio && C.musicUrl) {
+      try {
+        audio = new Audio(C.musicUrl);
+        audio.loop = true;
+        audio.volume = 0.6;
+      } catch (e) { audio = null; }
+    }
+  }
+  function setIcon(playing) {
+    if (!musicBtn) return;
+    musicBtn.innerHTML = playing ? PAUSE_SVG : NOTE_SVG;
+    musicBtn.classList.toggle("is-playing", playing);
+  }
+  function startMusic() {
+    ensureAudio();
+    if (!audio) return;
+    audio.play().then(function () { setIcon(true); }).catch(function () {});
+  }
+  if (musicBtn && C.musicUrl) {
+    musicBtn.hidden = false;
+    musicBtn.addEventListener("click", function () {
+      ensureAudio();
+      if (!audio) return;
+      if (audio.paused) startMusic();
+      else { audio.pause(); setIcon(false); }
+    });
+  }
+
+  /* ---------- open the invitation ---------- */
+  var openBtn = $("open-invite");
+  if (openBtn) {
+    openBtn.addEventListener("click", function () {
+      var intro = $("intro");
+      intro.classList.add("hide");
+      burst();
+      startMusic();
+      setTimeout(function () { intro.style.display = "none"; }, 900);
+    });
   }
 })();
 </script>
