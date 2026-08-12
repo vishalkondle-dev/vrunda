@@ -359,6 +359,25 @@
   .rail button:hover .tip,.rail button:focus-visible .tip{opacity:1}
   @media(max-width:560px){.rail{right:8px;gap:10px}}
 
+  /* ---------- butterfly cursor with feather trail ---------- */
+  .cursor-bfly{position:fixed;top:0;left:0;z-index:300;pointer-events:none;will-change:transform}
+  .cursor-bfly svg{display:block;transform-origin:50% 55%;animation:flapCur .4s ease-in-out infinite alternate}
+  @keyframes flapCur{from{transform:scaleX(1)}to{transform:scaleX(.32)}}
+  .cursor-bfly.bounce svg{animation:flapBounce .55s ease-in-out}
+  @keyframes flapBounce{
+    0%{transform:scaleX(1) rotate(0deg)}
+    30%{transform:scaleX(.3) rotate(-16deg)}
+    60%{transform:scaleX(1) rotate(10deg)}
+    100%{transform:scaleX(1) rotate(0deg)}
+  }
+  .trail-feather,.click-feather{position:fixed;z-index:250;pointer-events:none;width:11px;height:6px;
+    border-radius:50%;opacity:0;animation:featherFly ease-out forwards}
+  @keyframes featherFly{
+    0%{opacity:.9;transform:translate(0,0) rotate(0deg) scale(.7)}
+    100%{opacity:0;transform:translate(var(--fx),var(--fy)) rotate(var(--fr)) scale(1.1)}
+  }
+  .click-feather{animation-duration:1.2s}
+
   /* ---------- music toggle ---------- */
   .music-btn{
     position:fixed;right:16px;bottom:16px;z-index:80;width:46px;height:46px;border-radius:50%;
@@ -395,6 +414,8 @@
     .flutters,.flutter-fixed{display:none}
     .badge .glow{animation:none;opacity:.9}
     .music-btn.is-playing{animation:none}
+    .cursor-bfly svg{animation:none}
+    .trail-feather,.click-feather{display:none}
     .reveal{opacity:1;transform:none;transition:none}
     .frame,.fcard,.btn,.band button{transition:none}
   }
@@ -1094,6 +1115,62 @@
       else { audio.pause(); setIcon(false); }
     });
   }
+
+  /* ---------- open the invitation ---------- */
+  /* ---------- butterfly cursor: flies with a feather trail ---------- */
+  (function () {
+    var cursorEl = document.createElement("div");
+    cursorEl.className = "cursor-bfly";
+    cursorEl.innerHTML = butterflySvg(BFLY_COLORS[0], 48);
+    document.body.appendChild(cursorEl);
+
+    var st = document.createElement("style");
+    st.textContent = "body, body *{cursor:none}";
+    document.head.appendChild(st);
+
+    var FEATHER_COLORS = ["#fff", "#f6e3ef", "#e4dcf7", "#d9f0e6", "#fdf2dd"];
+    function spawnFeather(x, y, cls) {
+      if (REDUCED) return;
+      var f = document.createElement("i");
+      f.className = cls || "trail-feather";
+      var ang = Math.random() * Math.PI * 2;
+      var dist = 16 + Math.random() * 26;
+      f.style.left = (x - 5) + "px";
+      f.style.top = (y - 3) + "px";
+      f.style.background = FEATHER_COLORS[Math.floor(Math.random() * FEATHER_COLORS.length)];
+      f.style.setProperty("--fx", (Math.cos(ang) * dist).toFixed(1) + "px");
+      f.style.setProperty("--fy", (Math.sin(ang) * dist * 0.7 + 34).toFixed(1) + "px");
+      f.style.setProperty("--fr", (Math.random() * 220 - 110).toFixed(0) + "deg");
+      f.style.animationDuration = (1.2 + Math.random() * 0.8).toFixed(2) + "s";
+      document.body.appendChild(f);
+      (function (n) { setTimeout(function () { n.remove(); }, 2600); })(f);
+    }
+
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    var cx = mx, cy = my, lastX = mx, lastY = my;
+
+    document.addEventListener("mousemove", function (e) { mx = e.clientX; my = e.clientY; });
+
+    function loop() {
+      cx += (mx - cx) * 0.35;
+      cy += (my - cy) * 0.35;
+      cursorEl.style.transform = "translate3d(" + (cx - 24) + "px," + (cy - 19) + "px,0)";
+      var moved = Math.abs(cx - lastX) + Math.abs(cy - lastY);
+      if (moved > 26) {          // trail feathers as the butterfly flies
+        spawnFeather(cx, cy, "trail-feather");
+        lastX = cx; lastY = cy;
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    document.addEventListener("mousedown", function (e) {
+      cursorEl.classList.remove("bounce");
+      void cursorEl.offsetWidth;   // restart the animation
+      cursorEl.classList.add("bounce");
+      for (var i = 0; i < 6; i++) spawnFeather(e.clientX, e.clientY, "click-feather");
+    });
+  })();
 
   /* ---------- open the invitation ---------- */
   var openBtn = $("open-invite");
