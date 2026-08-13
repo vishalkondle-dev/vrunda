@@ -433,6 +433,32 @@
     .reveal{opacity:1;transform:none;transition:none}
     .frame,.fcard,.btn,.band button{transition:none}
   }
+
+  /* ---- credit footer ---- */
+  .credit{
+    text-align:center;
+    padding:34px 16px 48px;
+    font-family:"Great Vibes","Iowan Old Style",cursive,serif;
+    font-size:20px;
+    font-weight:600;
+    color:#5a3d6e;
+    letter-spacing:.05em;
+    text-shadow:0 1px 0 rgba(255,255,255,.6);
+  }
+  .credit .heart{
+    color:#d65782;
+    padding:0 3px;
+    font-size:18px;
+    display:inline-block;
+    animation:heartbeat 1.4s ease-in-out infinite;
+  }
+  .credit span{display:inline-block}
+  @keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    12%{transform:scale(1.25)}
+    24%{transform:scale(1)}
+    36%{transform:scale(1.18)}
+  }
 </style>
 </head>
 <body>
@@ -697,6 +723,10 @@
     <h2 class="section-title" id="family-title">With Love, From the Family</h2>
     <p class="section-sub">We cannot wait to celebrate her with you</p>
     <div class="family" id="family-grid"></div>
+
+    <footer class="credit">
+      <span>Made with <span class="heart">&#10084;</span> by Vishal K.</span>
+    </footer>
   </div>
 </section>
 
